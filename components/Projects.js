@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import ProjectCard from './ProjectCard';
 import ProjectModal from './ProjectModal';
 
-const experimentsData = [
+export const experimentsData = [
   {
     id: "unreal-animation",
     title: "MetaHuman Cinematic",
@@ -76,7 +76,7 @@ function ExperimentCard({ experiment }) {
   );
 }
 
-const projectsData = [
+export const projectsData = [
   {
     id: 1,
     title: "Sandy Heroes",
@@ -89,7 +89,7 @@ const projectsData = [
     image: "https://img.youtube.com/vi/CVMWE64RcTc/maxresdefault.jpg",
     details: {
       genre: "3D PvE FPS 게임 / PC",
-      summary: "캐주얼한 PvE 스타일의 게임으로, 최대 3명이 함께 플레이할 수 있는 1인칭 15분짜리 FPS 게임이다.",
+      summary: "캐주얼한 PvE 스타일의 게임으로, 최대 3명이 함께 플레이할 수 있는 1인칭 15분짜리 FPS 게임입니다.",
       concept: "사막 고대 유적에 숨어있는 나쁜 용을 물리쳐라!",
       goals: [
         "Component 구조를 사용한 게임 프레임워크",
@@ -204,9 +204,10 @@ const projectsData = [
   }
 ];
 
+export const orderedProjectsData = [projectsData[0], projectsData[3], projectsData[2], projectsData[1]];
+
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
-  const orderedProjects = [projectsData[0], projectsData[3], projectsData[2], projectsData[1]];
 
   const handleProjectClick = (project) => {
     setSelectedProject(project);
@@ -224,7 +225,7 @@ export default function Projects() {
         </h2>
 
         <div className="projects-grid">
-          {orderedProjects.map(project => (
+          {orderedProjectsData.map(project => (
             <div key={project.id} onClick={() => handleProjectClick(project)} style={{ cursor: 'pointer' }}>
               <ProjectCard project={project} />
             </div>
