@@ -26,75 +26,20 @@ export default function Resume() {
 
         <div className="resume-paper">
           <div className="resume-title-section">
+            <div className="resume-identity">
+            <div className="resume-eyebrow">GAME PROGRAMMER · RESUME</div>
             <h1 className="resume-name">서가은 <span>Seo Gaeun</span></h1>
-            <div className="resume-job">게임 프로그래머 (Game Programmer)</div>
+
+            <div className="resume-education"><strong>한국공학대학교 · 게임공학과</strong></div>
             <p className="resume-intro">
               게임공학을 전공하며 C++ 기반 게임 프로그래밍과 게임 클라이언트 개발을 공부하고 있습니다.<br />
               AI 도구를 활용해 구현 방향을 찾고, 직접 실행하고 확인하며 배운 내용을 실제 프로젝트에 적용하고 있습니다.
             </p>
+            </div>
+            <img className="resume-portrait" src="/profile.jpg" alt="서가은 프로필 사진" />
           </div>
 
           <div className="resume-grid">
-            <div className="resume-left-col">
-              <div className="resume-section resume-projects-section">
-                <h2 className="resume-sec-title">Projects</h2>
-
-                {orderedProjectsData.map((project) => (
-                  <div className="resume-project-item resume-project-entry" key={project.id}>
-                    <img src={project.image} alt={project.title} className="resume-project-image" />
-                    <div className="resume-proj-header">
-                      <h3 className="resume-proj-title">{project.title}</h3>
-                      <span className="resume-proj-date">{project.duration}</span>
-                    </div>
-                    <div className="resume-proj-tech">
-                      사용 기술: <strong>{project.details.techStack.join(', ')}</strong> ({project.teamSize})
-                    </div>
-                    <div className="resume-proj-desc">
-                      <p>{project.details.summary}</p>
-                      <ul>
-                        {project.roleItems.map((role) => <li key={role}>{role}</li>)}
-                      </ul>
-                    </div>
-                    <div className="resume-proj-links">
-                      {(project.details.playLinks ?? (project.playLink ? [{ name: '플레이 영상', url: project.playLink }] : [])).map((link) => (
-                        <a href={link.url} target="_blank" rel="noopener noreferrer" key={link.url}>{link.name}</a>
-                      ))}
-                      {project.details.githubLinks.map((githubLink, index) => (
-                        <a href={githubLink} target="_blank" rel="noopener noreferrer" key={githubLink}>
-                          {getGithubLabel(githubLink)}
-                        </a>
-                      ))}
-                      {project.details.reportFile?.endsWith('.hwp') && (
-                        <a href={`https://seogaeun.com${project.details.reportFile}`} target="_blank" rel="noopener noreferrer">보고서 다운로드 (HWP)</a>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="resume-section resume-animation-section">
-                <h2 className="resume-sec-title">Animation Works</h2>
-                <div className="resume-project-item">
-                  <div className="resume-animation-thumbs">
-                    {experimentsData.map((experiment) => (
-                      <a href={experiment.playLink} target="_blank" rel="noopener noreferrer" key={experiment.id}>
-                        <img src={experiment.image} alt={experiment.title} />
-                        <span>{experiment.tool}</span>
-                      </a>
-                    ))}
-                  </div>
-                  <div className="resume-proj-desc">
-                    <ul>
-                      {experimentsData.map((experiment) => (
-                        <li key={experiment.id}><strong>{experiment.title}:</strong> {experiment.description}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
             <div className="resume-right-col">
               <div className="resume-section">
                 <h2 className="resume-sec-title">Contact</h2>
@@ -139,10 +84,10 @@ export default function Resume() {
 
 
             </div>
-              <div className="resume-section resume-history-section">
-                <h2 className="resume-sec-title">Education &amp; Experience</h2>
+            <div className="resume-section resume-history-section">
+                <h2 className="resume-sec-title">Activities &amp; Awards</h2>
                 <div className="resume-history-grid">
-                {history.map((item) => (
+                {history.filter((item) => item.id !== 'history-0').map((item) => (
                   <div className="resume-edu-item" key={item.id}>
                     <div className="resume-edu-date">{item.date}</div>
                     <div className="resume-edu-title">{item.title}</div>
@@ -154,6 +99,62 @@ export default function Resume() {
                 ))}
                 </div>
               </div>
+            <div className="resume-section resume-projects-section">
+                <h2 className="resume-sec-title">Projects</h2>
+
+                {orderedProjectsData.map((project) => (
+                  <div className="resume-project-item resume-project-entry" key={project.id}>
+                    <img src={project.image} alt={project.title} className="resume-project-image" />
+                    <div className="resume-proj-header">
+                      <h3 className="resume-proj-title">{project.title}</h3>
+                      <span className="resume-proj-date">{project.duration}</span>
+                    </div>
+                    <div className="resume-proj-tech">
+                      사용 기술: <strong>{project.details.techStack.join(', ')}</strong> ({project.teamSize})
+                    </div>
+                    <div className="resume-proj-desc">
+                      <p>{project.details.summary}</p>
+                      <ul>
+                        {project.roleItems.map((role) => <li key={role}>{role}</li>)}
+                      </ul>
+                    </div>
+                    <div className="resume-proj-links">
+                      {(project.details.playLinks ?? (project.playLink ? [{ name: '플레이 영상', url: project.playLink }] : [])).map((link) => (
+                        <a href={link.url} target="_blank" rel="noopener noreferrer" key={link.url}>{link.name}</a>
+                      ))}
+                      {project.details.githubLinks.map((githubLink, index) => (
+                        <a href={githubLink} target="_blank" rel="noopener noreferrer" key={githubLink}>
+                          {getGithubLabel(githubLink)}
+                        </a>
+                      ))}
+                      {project.details.reportFile?.endsWith('.hwp') && (
+                        <a href={`https://seogaeun.com${project.details.reportFile}`} target="_blank" rel="noopener noreferrer">보고서 다운로드 (HWP)</a>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            <div className="resume-section resume-animation-section">
+                <h2 className="resume-sec-title">Animation Works</h2>
+                <div className="resume-project-item">
+                  <div className="resume-animation-thumbs">
+                    {experimentsData.map((experiment) => (
+                      <a href={experiment.playLink} target="_blank" rel="noopener noreferrer" key={experiment.id}>
+                        <img src={experiment.image} alt={experiment.title} />
+                        <span>{experiment.tool}</span>
+                      </a>
+                    ))}
+                  </div>
+                  <div className="resume-proj-desc">
+                    <ul>
+                      {experimentsData.map((experiment) => (
+                        <li key={experiment.id}><strong>{experiment.title}:</strong> {experiment.description}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
           </div>
         </div>
       </div>

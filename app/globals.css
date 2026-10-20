@@ -1381,3 +1381,93 @@ a {
 @media print {
   .resume-project-entry .resume-proj-desc li { margin-bottom: 0.15rem; }
 }
+
+/* Resume reading order: profile, contact and skills, history, projects, animation. */
+.resume-title-section { display: grid; grid-template-columns: minmax(0, 1fr) 110px; gap: 2rem; align-items: center; padding: 0 0 2rem; border-bottom: 3px solid var(--text-primary); }
+.resume-eyebrow { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.18em; margin-bottom: 0.9rem; color: var(--text-tertiary); }
+.resume-name { font-size: 3rem; line-height: 1.15; letter-spacing: -0.04em; }
+.resume-name span { display: inline-block; font-size: 1.2rem; font-weight: 500; letter-spacing: 0; margin-left: 0.6rem; }
+.resume-job { font-size: 1.05rem; letter-spacing: 0; margin-top: 0.6rem; }
+.resume-intro { font-size: 0.95rem; }
+.resume-portrait { width: 110px; aspect-ratio: 250 / 310; object-fit: cover; border: 1px solid var(--surface-border); border-radius: 3px; }
+.resume-grid { display: flex; flex-direction: column; gap: 2.5rem; }
+.resume-right-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--surface-border); }
+.resume-project-entry { grid-template-columns: 36% minmax(0, 1fr); }
+.resume-project-entry .resume-project-image { grid-row: 1 / span 3; }
+.resume-project-entry .resume-proj-desc { grid-column: 2; }
+.resume-project-entry .resume-proj-links { grid-column: 2; flex-wrap: wrap; }
+@media screen and (max-width: 600px) {
+  .resume-title-section { grid-template-columns: minmax(0, 1fr) 75px; gap: 1rem; }
+  .resume-portrait { width: 75px; }
+  .resume-name { font-size: 2.2rem; }
+  .resume-name span { display: block; margin: 0.4rem 0 0; font-size: 1rem; }
+  .resume-right-col { grid-template-columns: 1fr; }
+  .resume-project-entry { grid-template-columns: 125px minmax(0, 1fr); }
+  .resume-project-entry .resume-project-image { grid-row: 1 / span 2; }
+  .resume-project-entry .resume-proj-tech { grid-column: 2; }
+  .resume-project-entry .resume-proj-desc, .resume-project-entry .resume-proj-links { grid-column: 1 / -1; }
+}
+@media print {
+  .resume-grid { gap: 1rem; }
+  .resume-title-section { grid-template-columns: minmax(0, 1fr) 80px; gap: 1.5rem; padding-bottom: 1rem; margin-bottom: 1.25rem; }
+  .resume-portrait { width: 80px; }
+  .resume-eyebrow { font-size: 7pt; margin-bottom: 0.6rem; }
+  .resume-name { font-size: 30pt; }
+  .resume-name span { font-size: 12pt; }
+  .resume-job { font-size: 11pt; }
+  .resume-intro { font-size: 9pt; }
+  .resume-right-col { order: 0; break-before: auto; margin-bottom: 0; padding-bottom: 1rem; }
+  .resume-history-section { order: 1; }
+  .resume-projects-section { order: 2; break-before: page; }
+  .resume-animation-section { order: 3; break-inside: avoid; }
+  .resume-project-entry { grid-template-columns: 32% minmax(0, 1fr); margin-bottom: 0.6rem; padding-bottom: 0.6rem; }
+  .resume-project-entry .resume-proj-desc { font-size: 8.5pt; line-height: 1.4; }
+  .resume-animation-thumbs { max-width: 260px; }
+  .resume-animation-section .resume-proj-desc { font-size: 8pt; }
+}
+
+@media print {
+  .resume-projects-section { break-before: auto; }
+}
+
+/* Compact overview leaves the first page for the two team projects. */
+.resume-contact-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.65rem 1rem; }
+.resume-history-grid { grid-template-columns: 1fr; }
+.resume-history-grid .resume-edu-item { display: grid; grid-template-columns: 220px minmax(0, 1fr) auto; gap: 0.15rem 1rem; padding: 0.65rem 0; align-items: baseline; }
+.resume-history-grid .resume-edu-date { grid-row: 1 / span 2; margin: 0; }
+.resume-history-grid .resume-edu-desc { grid-column: 2; }
+.resume-history-grid .resume-edu-item a { grid-column: 3; grid-row: 1 / span 2; }
+@media screen and (max-width: 800px) {
+  .resume-contact-list { grid-template-columns: 1fr; }
+  .resume-history-grid .resume-edu-item { grid-template-columns: 170px minmax(0, 1fr); }
+  .resume-history-grid .resume-edu-item a { grid-column: 2; grid-row: auto; }
+}
+@media screen and (max-width: 480px) {
+  .resume-history-grid .resume-edu-item { grid-template-columns: 1fr; gap: 0.25rem; }
+  .resume-history-grid .resume-edu-date { grid-row: auto; }
+  .resume-history-grid .resume-edu-desc, .resume-history-grid .resume-edu-item a { grid-column: 1; }
+}
+@media print {
+  .resume-grid { gap: 0.7rem; }
+  .resume-title-section { margin-bottom: 0.8rem; padding-bottom: 0.7rem; }
+  .resume-right-col { grid-template-columns: 1fr 1fr; gap: 1.5rem; padding-bottom: 0.5rem; }
+  .resume-contact-list { grid-template-columns: 1fr 1fr; gap: 0.35rem 0.7rem; }
+  .resume-contact-list li { font-size: 8pt; gap: 0.3rem; }
+  .resume-right-col .resume-sec-title { font-size: 11pt; margin-bottom: 0.5rem; }
+  .resume-skill-group { display: inline-block; vertical-align: top; margin: 0 0.7rem 0.3rem 0; }
+  .resume-skill-group-title { font-size: 8pt; margin-bottom: 0.3rem; }
+  .resume-history-grid { grid-template-columns: 1fr; gap: 0; }
+  .resume-history-grid .resume-edu-item { grid-template-columns: 145px minmax(0, 1fr) auto; padding: 0.35rem 0; gap: 0.1rem 0.75rem; }
+  .resume-history-grid .resume-edu-title { font-size: 8.5pt; }
+  .resume-history-grid .resume-edu-date { font-size: 7.5pt; }
+  .resume-history-grid .resume-edu-desc { font-size: 7.5pt; }
+  .resume-project-entry:nth-of-type(3) { break-before: page; }
+}
+
+.resume-education { margin-top: 0.6rem; font-size: 0.9rem; color: var(--text-secondary); }
+@media print { .resume-education { margin-top: 0.4rem; font-size: 8.5pt; } }
+
+.resume-education { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 0.75rem; }
+.resume-education strong { color: var(--text-primary); font-size: 1rem; font-weight: 800; }
+.resume-education span { font-size: 0.85rem; }
+@media print { .resume-education strong { font-size: 10pt; } .resume-education span { font-size: 8pt; } }
