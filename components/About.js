@@ -1,4 +1,5 @@
 import React from 'react';
+import history from '@/data/history.json';
 
 export default function About() {
   return (
@@ -47,36 +48,16 @@ export default function About() {
 
           <div className="about-experience">
             <div className="experience-list">
-              <div className="experience-item">
-                <span className="exp-date">2022.03 - 현재</span>
-                <h3 className="exp-title">한국공학대학교 게임공학과</h3>
-                <span className="exp-company">재학중</span>
-              </div>
-              <div className="experience-item">
-                <span className="exp-date">2022.03 - 2023.02</span>
-                <h3 className="exp-title">게임공학과 학생회 부원</h3>
-                <span className="exp-company">학과 내 행사 기획 및 지원</span>
-              </div>
-              <div className="experience-item">
-                <span className="exp-date">2024 1,2학기 / 2026 1학기</span>
-                <h3 className="exp-title">C/C++ 프로그래밍 학술 멘토</h3>
-                <span className="exp-company">학과 내 C/C++ 멘토링 진행</span>
-              </div>
-              <div className="experience-item">
-                <span className="exp-date">2026.02</span>
-                <h3 className="exp-title">cbs AI 집중교육 조교</h3>
-                <span className="exp-company">n8n 단기 특강 조교 활동</span>
-              </div>
-              <div className="experience-item">
-                <span className="exp-date">2026.04 / 2026.07</span>
-                <h3 className="exp-title">kbs 바이브코딩 특강 조교</h3>
-                <span className="exp-company">바이브코딩 단기 특강 조교 활동</span>
-              </div>
-              <div className="experience-item">
-                <span className="exp-date">2026.07</span>
-                <h3 className="exp-title">2026 재밌넥 게임잼 참가</h3>
-                <span className="exp-company">영상형 시뮬레이션 게임 제작</span>
-              </div>
+              {history.map((item) => (
+                <div className="experience-item" key={item.id}>
+                  <span className="exp-date">{item.date}</span>
+                  <h3 className="exp-title">{item.title}</h3>
+                  <span className="exp-company">{item.description}</span>
+                  {item.certificate && (
+                    <a className="exp-certificate" href={item.certificate} target="_blank" rel="noopener noreferrer">상장 보기 ↗</a>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </div>

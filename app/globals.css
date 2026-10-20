@@ -362,8 +362,8 @@ a {
 
 .experience-item {
   position: relative;
-  padding: 0 0 1.5rem 0;
-  margin-bottom: 1.5rem;
+  padding: 0 0 1rem 0;
+  margin-bottom: 1rem;
   border-left: 0;
   border-bottom: 1px solid var(--surface-border);
 }
@@ -1255,4 +1255,13 @@ a {
   .resume-proj-links {
     display: none !important;
   }
+}
+
+.exp-certificate {
+  display: block;
+  width: fit-content;
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }

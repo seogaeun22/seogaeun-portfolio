@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import history from '@/data/history.json';
 import { ArrowLeft, Printer, Mail, Phone, Github, Globe } from 'lucide-react';
 import Link from 'next/link';
 import { experimentsData, orderedProjectsData } from '@/components/Projects';
@@ -88,13 +89,6 @@ export default function Resume() {
                 </div>
               </div>
 
-              <div className="resume-section">
-                <h2 className="resume-sec-title">Education</h2>
-                <div className="resume-edu-item">
-                  <div className="resume-edu-title">한국공학대학교 게임공학과</div>
-                  <div className="resume-edu-date">2022.03 ~ 현재 (재학)</div>
-                </div>
-              </div>
             </div>
 
             <div className="resume-right-col">
@@ -139,32 +133,17 @@ export default function Resume() {
               </div>
 
               <div className="resume-section">
-                <h2 className="resume-sec-title">Experience</h2>
-                <div className="resume-edu-item">
-                  <div className="resume-edu-title">C/C++ 프로그래밍 학술 멘토</div>
-                  <div className="resume-edu-date">2024 1, 2학기 / 2026 1학기</div>
-                  <div className="resume-edu-desc">학과 내 C/C++ 멘토링 진행</div>
-                </div>
-                <div className="resume-edu-item">
-                  <div className="resume-edu-title">kbs 바이브코딩 특강 조교</div>
-                  <div className="resume-edu-date">2026.04 / 2026.07</div>
-                  <div className="resume-edu-desc">바이브코딩 단기 특강 조교 활동</div>
-                </div>
-                <div className="resume-edu-item">
-                  <div className="resume-edu-title">cbs AI 집중교육 조교</div>
-                  <div className="resume-edu-date">2026.02</div>
-                  <div className="resume-edu-desc">n8n 단기 특강 조교 활동</div>
-                </div>
-                <div className="resume-edu-item">
-                  <div className="resume-edu-title">2026 재밌넥 게임잼 참가</div>
-                  <div className="resume-edu-date">2026.07</div>
-                  <div className="resume-edu-desc">영상형 시뮬레이션 게임 제작</div>
-                </div>
-                <div className="resume-edu-item">
-                  <div className="resume-edu-title">게임공학과 학생회 부원</div>
-                  <div className="resume-edu-date">2022.03 ~ 2023.02</div>
-                  <div className="resume-edu-desc">학과 내 행사 기획 및 지원</div>
-                </div>
+                <h2 className="resume-sec-title">Education &amp; Experience</h2>
+                {history.map((item) => (
+                  <div className="resume-edu-item" key={item.id}>
+                    <div className="resume-edu-date">{item.date}</div>
+                    <div className="resume-edu-title">{item.title}</div>
+                    <div className="resume-edu-desc">{item.description}</div>
+                    {item.certificate && (
+                      <a href={item.certificate} target="_blank" rel="noopener noreferrer">상장 보기 ↗</a>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
