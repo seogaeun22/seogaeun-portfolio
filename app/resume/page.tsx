@@ -56,9 +56,9 @@ export default function Resume() {
                       </ul>
                     </div>
                     <div className="resume-proj-links">
-                      {project.playLink && (
-                        <a href={project.playLink} target="_blank" rel="noopener noreferrer">플레이 영상</a>
-                      )}
+                      {(project.details.playLinks ?? (project.playLink ? [{ name: '플레이 영상', url: project.playLink }] : [])).map((link) => (
+                        <a href={link.url} target="_blank" rel="noopener noreferrer" key={link.url}>{link.name}</a>
+                      ))}
                       {project.details.githubLinks.map((githubLink, index) => (
                         <a href={githubLink} target="_blank" rel="noopener noreferrer" key={githubLink}>
                           {getGithubLabel(githubLink)}

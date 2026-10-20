@@ -78,7 +78,7 @@
 - **사용 기술**: Unreal Engine 5.3, Blueprint
 - **프로젝트 소개**: 불꽃 화살을 쏘는 궁수가 판타지 숲의 신비한 트로피를 구하러 가는 3D PvE 게임입니다.
 - **담당 역할**: 기획 및 블루프린트 기반의 전체 게임플레이 시스템 개발
-- **영상**: [플레이 영상](https://youtu.be/K9KKlUR2OVY?si=DSWlTxJqc0U4_vky)
+- **영상**: [게임 소개 (처음부터)](https://youtu.be/K9KKlUR2OVY?si=DSWlTxJqc0U4_vky) / [게임 플레이 (6분 22초부터)](https://youtu.be/K9KKlUR2OVY?t=382)
 
 ---
 
