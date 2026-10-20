@@ -81,22 +81,23 @@ export const projectsData = [
     id: 1,
     title: "Sandy Heroes",
     genre: "3D PvE FPS / PC",
-    duration: "2024.09 - 2025.08",
+    duration: "2024.09 ~ 2025.08",
     teamSize: "3인 프로젝트",
     role: "그림자 매핑, 파티클 시스템, 충돌 처리, 길찾기 알고리즘 구현 및 맵·콘텐츠 제작 담당",
+    roleItems: ["렌더링: 그림자 매핑·파티클 시스템 구현","게임 로직: 충돌 처리·길찾기 알고리즘 구현","콘텐츠: 맵·콘텐츠 제작"],
     github: "https://github.com/klop2211/SandyHeroesClient",
     playLink: "https://youtu.be/CVMWE64RcTc?si=x7CyGJ1dE2HHoyMh",
     image: "https://img.youtube.com/vi/CVMWE64RcTc/maxresdefault.jpg",
     details: {
       genre: "3D PvE FPS 게임 / PC",
       summary: "캐주얼한 PvE 스타일의 게임으로, 최대 3명이 함께 플레이할 수 있는 1인칭 15분짜리 FPS 게임입니다.",
-      concept: "사막 고대 유적에 숨어있는 나쁜 용을 물리쳐라!",
+      versionNote: "싱글플레이 버전을 기반으로 멀티플레이 기능을 추가한 확장 버전입니다.",
       goals: [
         "Component 구조를 사용한 게임 프레임워크",
         "기하 쉐이더를 사용한 파티클 시스템과 몰입감을 높여주는 컷신 시스템",
         "클라이언트와 서버의 연동을 위한 Lock 없는 IOCP 서버 구현"
       ],
-      techStack: ["C++", "DirectX12", "IOCP"],
+      techStack: ["C++", "DirectX 12", "IOCP"],
       githubLinks: [
         "https://github.com/klop2211/SandyHeroesClient",
         "https://github.com/ehdxorhrl/SandyHeroes_--"
@@ -111,18 +112,16 @@ export const projectsData = [
     genre: "3D PvE / PC",
     duration: "2025.06.18 ~ 2025.06.20",
     teamSize: "1인 프로젝트",
-    role: "기획, 레벨 디자인 및 블루프린트(Blueprint) 기반의 전체 게임플레이 시스템 및 UI 단독 개발",
+    role: "기획 및 블루프린트 기반의 전체 게임플레이 시스템 개발",
+    roleItems: ["기획 및 블루프린트 기반의 전체 게임플레이 시스템 개발"],
     github: "https://github.com/seogaeun22",
     playLink: "https://youtu.be/K9KKlUR2OVY?si=DSWlTxJqc0U4_vky",
     image: "https://img.youtube.com/vi/K9KKlUR2OVY/maxresdefault.jpg",
     details: {
       genre: "3D PvE 게임 / PC (언리얼 엔진)",
       summary: "불꽃 화살을 쏘는 궁수가 판타지 숲에만 존재하는 신비의 트로피를 구하러 가는 게임입니다.",
-      concept: "블루프린트를 통한 궁수 캐릭터의 전투 및 이동 메커니즘 설계",
       goals: [
         "Unreal Engine의 Blueprint를 활용한 PvE 게임 구현",
-        "블루프린트를 통한 궁수 캐릭터의 전투 및 이동 메커니즘 설계",
-        "레벨 디자인을 통한 적 배치 및 클리어 목표 설정"
       ],
       techStack: ["Unreal Engine 5.3", "Blueprint"],
       githubLinks: [
@@ -141,13 +140,13 @@ export const projectsData = [
     duration: "2026.07.03 ~ 2026.07.05",
     teamSize: "1인 프로젝트",
     role: "기획, Direct2D 기반 게임 구현, 타워·웨이브·스킬·이벤트 시스템 제작 및 AI 도구를 활용한 리소스 제작/개발 보조",
+    roleItems: ["기획·개발: Direct2D 기반 게임 기획 및 구현","시스템: 타워·웨이브·스킬·이벤트 제작","AI 활용: 리소스 제작 및 개발 보조"],
     github: "",
     playLink: "https://youtu.be/Jr1Cg_P9-L8?si=2UhyFg3MbtbPymJD",
     image: "/projects/diet-defense/thumbnail.png",
     details: {
       genre: "2D 타워 디펜스 게임 / PC",
       summary: "다이어트 코어를 지키며 몰려오는 음식 몬스터를 막아내는 Direct2D 기반 2D 타워 디펜스 게임입니다.",
-      concept: "체중 60kg 도달을 막기 위해 타워를 배치하고, 웨이브와 이벤트를 넘기며 생존하는 캐주얼 디펜스",
       goals: [
         "Direct2D 기반 2D 타워 디펜스 게임 구현",
         "타워 배치, 타워 강화, 판매, 자원 관리 시스템 제작",
@@ -179,14 +178,14 @@ export const projectsData = [
     genre: "영상형 시뮬레이션 / PC",
     duration: "2026.07.24 ~ 2026.07.26",
     teamSize: "4인 프로젝트",
-    role: "메인 기획 및 시나리오 작성, 디자인, 미니 게임 개발, 실사 영상 연기, Suno AI를 활용한 BGM 제작, 플레이 테스트 및 버그 수정 담당",
+    role: "메인 기획 및 시나리오 작성, 미니게임·이벤트 발생 문구 디자인, 미니 게임 개발, 실사 영상 연기, Suno AI를 활용한 BGM 제작, 플레이 테스트 및 버그 수정 담당",
+    roleItems: ["기획: 메인 기획·시나리오","디자인: 미니게임·이벤트 발생 문구 디자인","개발: 미니 게임 구현·플레이 테스트·버그 수정","콘텐츠: 실사 영상 연기·Suno AI BGM 제작"],
     github: "https://github.com/Bazzi4263/MyFirst3D",
     playLink: "https://youtu.be/H6Mu9AAfaFk",
     image: "/projects/jamitnex/thumbnail.png",
     details: {
       genre: "영상형 시뮬레이션 / PC",
       summary: "소심한 남주인공(플레이어)이 '재밌넥' 게임잼에서 자신에게 말을 걸어준 여주인공과 함께 게임을 만들며 설렘을 느끼는 내용의 영상형 연애 시뮬레이션 게임입니다.",
-      concept: "STT 및 LLM 기술을 활용한 플레이어 상호작용 중심의 게임 개발",
       goals: [
         "2026 재밌넥 게임잼 프로젝트 출품",
         "STT 및 LLM 기술을 활용한 텍스트/음성 기반 상호작용형 영상 연애 시뮬레이션 개발"

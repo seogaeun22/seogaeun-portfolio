@@ -19,7 +19,7 @@ export default function About() {
 
           <div className="about-text">
             <p>
-              안녕하세요. 게임공학을 전공하며 <strong>C++</strong> 기반 게임 프로그래밍과 <strong>게임 클라이언트 개발</strong>을 공부하고 있는 서가은입니다.
+              안녕하세요. 게임공학을 전공하며 <strong>C++</strong> 기반 게임 프로그래밍과 <strong>게임 클라이언트 개발</strong>을 공부하고 있는 서가은입니다.<br />
               <strong>AI 도구</strong>를 활용해 구현 방향을 찾아보고, 막히는 부분을 작은 단위로 나누어 확인하며 개발 과정을 더 빠르고 명확하게 만드는 데 관심이 있습니다.
             </p>
             <p>
@@ -36,26 +36,30 @@ export default function About() {
                 </div>
               </div>
 
-              <div className="skills-category" style={{ marginTop: '1.5rem' }}>
+              <div className="skills-category">
                 <h4 className="skills-category-title">Familiar / Tools</h4>
                 <div className="skills-container">
                   <span className="skill-tag">Unreal Engine</span>
                   <span className="skill-tag">Git</span>
+                  <span className="skill-tag">AI</span>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="about-experience">
+            <h3 className="history-heading">Education &amp; Experience</h3>
             <div className="experience-list">
               {history.map((item) => (
                 <div className="experience-item" key={item.id}>
                   <span className="exp-date">{item.date}</span>
-                  <h3 className="exp-title">{item.title}</h3>
+                  <div className="exp-content">
+                  <h4 className="exp-title">{item.title}</h4>
                   <span className="exp-company">{item.description}</span>
                   {item.certificate && (
                     <a className="exp-certificate" href={item.certificate} target="_blank" rel="noopener noreferrer">상장 보기 ↗</a>
                   )}
+                  </div>
                 </div>
               ))}
             </div>

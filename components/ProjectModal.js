@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { getGithubLabel } from '@/lib/project-links';
 import { X, Github, Play, Download } from 'lucide-react';
 
 export default function ProjectModal({ project, onClose }) {
@@ -76,9 +77,7 @@ export default function ProjectModal({ project, onClose }) {
             <div className="modal-section">
               <h4>프로젝트 소개</h4>
               <p><strong>한 줄 요약:</strong> {project.details.summary}</p>
-              {project.details.concept && (
-                <p><strong>핵심 컨셉:</strong> {project.details.concept}</p>
-              )}
+              {project.details.versionNote && <p>{project.details.versionNote}</p>}
             </div>
           )}
 
@@ -87,7 +86,7 @@ export default function ProjectModal({ project, onClose }) {
             <ul>
               <li><strong>개발 기간:</strong> {project.duration}</li>
               <li><strong>팀 구성:</strong> {project.teamSize}</li>
-              <li><strong>나의 역할:</strong> {project.role}</li>
+              <li><strong>담당 역할:</strong><ul>{project.roleItems.map((role) => <li key={role}>{role}</li>)}</ul></li>
             </ul>
           </div>
 
@@ -116,11 +115,11 @@ export default function ProjectModal({ project, onClose }) {
           <div className="modal-links">
             {project.details?.githubLinks?.map((link, idx) => (
               <a key={idx} href={link} target="_blank" rel="noopener noreferrer" className="btn">
-                <Github size={18} /> {project.details.githubLinks.length > 1 ? `GitHub ${idx + 1}` : 'GitHub'}
+                <Github size={18} /> {getGithubLabel(link)}
               </a>
             )) || (project.github && (
               <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn">
-                <Github size={18} /> GitHub
+                <Github size={18} /> {getGithubLabel(project.github)}
               </a>
             ))}
 

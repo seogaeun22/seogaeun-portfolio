@@ -2,6 +2,7 @@
 
 import React from 'react';
 import history from '@/data/history.json';
+import { getGithubLabel } from '@/lib/project-links';
 import { ArrowLeft, Printer, Mail, Phone, Github, Globe } from 'lucide-react';
 import Link from 'next/link';
 import { experimentsData, orderedProjectsData } from '@/components/Projects';
@@ -28,18 +29,18 @@ export default function Resume() {
             <h1 className="resume-name">서가은 <span>Seo Gaeun</span></h1>
             <div className="resume-job">게임 프로그래머 (Game Programmer)</div>
             <p className="resume-intro">
-              게임공학을 전공하며 C++ 기반 게임 프로그래밍과 게임 클라이언트 개발을 공부하고 있습니다.
+              게임공학을 전공하며 C++ 기반 게임 프로그래밍과 게임 클라이언트 개발을 공부하고 있습니다.<br />
               AI 도구를 활용해 구현 방향을 찾고, 직접 실행하고 확인하며 배운 내용을 실제 프로젝트에 적용하고 있습니다.
             </p>
           </div>
 
           <div className="resume-grid">
             <div className="resume-left-col">
-              <div className="resume-section">
+              <div className="resume-section resume-projects-section">
                 <h2 className="resume-sec-title">Projects</h2>
 
                 {orderedProjectsData.map((project) => (
-                  <div className="resume-project-item" key={project.id}>
+                  <div className="resume-project-item resume-project-entry" key={project.id}>
                     <img src={project.image} alt={project.title} className="resume-project-image" />
                     <div className="resume-proj-header">
                       <h3 className="resume-proj-title">{project.title}</h3>
@@ -51,7 +52,7 @@ export default function Resume() {
                     <div className="resume-proj-desc">
                       <p>{project.details.summary}</p>
                       <ul>
-                        <li><strong>담당 역할:</strong> {project.role}</li>
+                        {project.roleItems.map((role) => <li key={role}>{role}</li>)}
                       </ul>
                     </div>
                     <div className="resume-proj-links">
@@ -60,15 +61,18 @@ export default function Resume() {
                       )}
                       {project.details.githubLinks.map((githubLink, index) => (
                         <a href={githubLink} target="_blank" rel="noopener noreferrer" key={githubLink}>
-                          {project.details.githubLinks.length > 1 ? `GitHub ${index + 1}` : 'GitHub'}
+                          {getGithubLabel(githubLink)}
                         </a>
                       ))}
+                      {project.details.reportFile?.endsWith('.hwp') && (
+                        <a href={`https://seogaeun.com${project.details.reportFile}`} target="_blank" rel="noopener noreferrer">보고서 다운로드 (HWP)</a>
+                      )}
                     </div>
                   </div>
                 ))}
               </div>
 
-              <div className="resume-section">
+              <div className="resume-section resume-animation-section">
                 <h2 className="resume-sec-title">Animation Works</h2>
                 <div className="resume-project-item">
                   <div className="resume-animation-thumbs">
@@ -128,24 +132,28 @@ export default function Resume() {
                   <div className="resume-skill-tags">
                     <span className="skill-tag">Unreal Engine</span>
                     <span className="skill-tag">Git</span>
+                    <span className="skill-tag">AI</span>
                   </div>
                 </div>
               </div>
 
-              <div className="resume-section">
+
+            </div>
+              <div className="resume-section resume-history-section">
                 <h2 className="resume-sec-title">Education &amp; Experience</h2>
+                <div className="resume-history-grid">
                 {history.map((item) => (
                   <div className="resume-edu-item" key={item.id}>
                     <div className="resume-edu-date">{item.date}</div>
                     <div className="resume-edu-title">{item.title}</div>
                     <div className="resume-edu-desc">{item.description}</div>
                     {item.certificate && (
-                      <a href={item.certificate} target="_blank" rel="noopener noreferrer">상장 보기 ↗</a>
+                      <a href={`https://seogaeun.com${item.certificate}`} target="_blank" rel="noopener noreferrer">상장 보기 ↗</a>
                     )}
                   </div>
                 ))}
+                </div>
               </div>
-            </div>
           </div>
         </div>
       </div>

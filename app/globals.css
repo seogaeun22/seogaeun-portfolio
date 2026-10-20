@@ -241,7 +241,7 @@ a {
 /* About Section */
 .about-grid {
   display: grid;
-  grid-template-columns: 280px 1fr 1fr;
+  grid-template-columns: 250px minmax(0, 1fr);
   gap: 48px;
   align-items: start;
 }
@@ -362,8 +362,8 @@ a {
 
 .experience-item {
   position: relative;
-  padding: 0 0 1rem 0;
-  margin-bottom: 1rem;
+  padding: 0 0 0.625rem 0;
+  margin-bottom: 0.625rem;
   border-left: 0;
   border-bottom: 1px solid var(--surface-border);
 }
@@ -379,7 +379,7 @@ a {
 .exp-date {
   font-size: 0.85rem;
   color: var(--text-tertiary);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
   display: block;
   font-weight: 800;
 }
@@ -688,7 +688,7 @@ a {
 /* Responsive Design */
 @media (max-width: 1024px) {
   .about-grid {
-    grid-template-columns: 1fr 1.2fr;
+    grid-template-columns: 220px minmax(0, 1fr);
   }
   .about-image-container {
     grid-column: span 2;
@@ -1264,4 +1264,120 @@ a {
   font-size: 0.85rem;
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+/* Wide introduction and a compact, full-width history timeline. */
+.about-text { min-width: 0; }
+.about-text p { word-break: keep-all; overflow-wrap: anywhere; }
+.about-text .skills-section { display: flex; flex-wrap: wrap; gap: 1.5rem 3rem; margin-top: 1.75rem; }
+.about-experience { grid-column: 1 / -1; min-width: 0; }
+.history-heading { font-size: 1rem; font-weight: 900; text-transform: uppercase; margin-bottom: 1.25rem; }
+.experience-list { border-top: 2px solid var(--text-primary); }
+.experience-item { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 1.5rem; padding: 1rem 0; margin: 0; }
+.exp-date { margin: 0; padding-top: 0.2rem; }
+.exp-content { position: relative; padding-left: 1.5rem; border-left: 1px solid var(--surface-border); min-width: 0; }
+.exp-content::before { content: ''; position: absolute; top: 0.55rem; left: -4px; width: 7px; height: 7px; border-radius: 50%; background: var(--text-primary); }
+.exp-title { font-size: 1.05rem; word-break: keep-all; overflow-wrap: anywhere; }
+.exp-company { font-size: 0.9rem; }
+@media (max-width: 768px) {
+  .about-grid { gap: 2rem; }
+  .about-image-container { margin-bottom: 0; }
+  .experience-item { grid-template-columns: minmax(0, 1fr); gap: 0.5rem; padding: 1rem 0; }
+  .exp-date { padding-left: 1.5rem; }
+}
+
+/* Project thumbnails share the heading area; descriptions retain full width. */
+.resume-project-entry {
+  display: grid;
+  grid-template-columns: minmax(120px, 30%) minmax(0, 1fr);
+  gap: 0.5rem 1.25rem;
+  align-items: start;
+}
+.resume-project-entry .resume-project-image {
+  grid-row: span 2;
+  margin: 0;
+}
+.resume-project-entry .resume-proj-header {
+  flex-direction: column;
+  gap: 0.3rem;
+  margin: 0;
+}
+.resume-project-entry .resume-proj-tech { grid-column: 2; margin: 0; }
+.resume-project-entry .resume-proj-desc { grid-column: 1 / -1; margin-top: 0.5rem; }
+.resume-project-entry .resume-proj-links { grid-column: 1 / -1; }
+@media (max-width: 480px) {
+  .resume-project-entry { grid-template-columns: 100px minmax(0, 1fr); gap: 0.6rem 0.8rem; }
+  .resume-project-entry .resume-proj-title { font-size: 1rem; }
+  .resume-project-entry .resume-project-image { grid-row: 1; }
+  .resume-project-entry .resume-proj-tech { grid-column: 1 / -1; }
+}
+
+.resume-project-entry { grid-template-columns: minmax(150px, 42%) minmax(0, 1fr); }
+.resume-animation-thumbs { max-width: 440px; }
+.resume-history-section { grid-column: 1 / -1; }
+.resume-history-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2rem; }
+.resume-history-grid .resume-edu-item { padding: 0.8rem 0; margin: 0; border-bottom: 1px solid var(--surface-border); }
+@media screen and (max-width: 600px) {
+  .resume-history-grid { grid-template-columns: 1fr; }
+}
+@media screen and (max-width: 480px) {
+  .resume-project-entry { grid-template-columns: 125px minmax(0, 1fr); }
+}
+@page { size: A4; margin: 12mm 14mm; }
+@media print {
+  html, body { font-size: 10pt !important; }
+  .resume-page .container { max-width: none; width: 100%; padding: 0; }
+  .resume-grid { display: flex; flex-direction: column; gap: 0; }
+  .resume-left-col { display: contents; }
+  .resume-projects-section { order: 1; }
+  .resume-right-col { order: 2; break-before: page; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .resume-animation-section { order: 3; margin-bottom: 1rem; }
+  .resume-history-section { order: 4; break-inside: avoid; }
+  .resume-title-section { margin-bottom: 1rem; padding-bottom: 0.8rem; }
+  .resume-name { font-size: 25pt; }
+  .resume-job { font-size: 12pt; margin-bottom: 0.5rem; }
+  .resume-intro { font-size: 9pt; line-height: 1.5; }
+  .resume-sec-title { font-size: 13pt; margin-bottom: 0.7rem; break-after: avoid; }
+  .resume-project-entry { grid-template-columns: 38% minmax(0, 1fr); gap: 0.3rem 1rem; margin-bottom: 0.8rem; padding-bottom: 0.8rem; break-inside: avoid; }
+  .resume-project-entry .resume-proj-title { font-size: 12pt; }
+  .resume-project-entry .resume-proj-date, .resume-project-entry .resume-proj-tech { font-size: 8pt; }
+  .resume-project-entry .resume-proj-desc { font-size: 9pt; line-height: 1.45; margin-top: 0.2rem; }
+  .resume-contact-list { gap: 0.35rem; }
+  .resume-contact-list li, .resume-skill-group-title { font-size: 9pt; }
+  .resume-skill-group { margin-bottom: 0.6rem; }
+  .resume-skill-group-title { margin-bottom: 0.4rem; }
+  .resume-skill-tags .skill-tag { font-size: 8pt; padding: 0.25rem 0.5rem; }
+  .resume-animation-thumbs { max-width: 300px; margin-bottom: 0.5rem; }
+  .resume-animation-thumbs span { font-size: 8pt; padding: 0.25rem 0.5rem; }
+  .resume-animation-section .resume-proj-desc { font-size: 9pt; }
+  .resume-history-grid { gap: 0 1.5rem; }
+  .resume-history-grid .resume-edu-item { padding: 0.5rem 0; break-inside: avoid; }
+  .resume-history-grid .resume-edu-title { font-size: 9pt; }
+  .resume-history-grid .resume-edu-date { font-size: 8pt; margin-bottom: 0.25rem; }
+  .resume-history-grid .resume-edu-desc, .resume-history-grid a { font-size: 8pt; }
+}
+
+@media print {
+  .resume-project-entry .resume-project-image { grid-row: 1 / span 3; }
+  .resume-project-entry .resume-proj-desc { grid-column: 2; }
+}
+
+@media print {
+  .resume-project-entry .resume-proj-links { display: flex !important; grid-column: 2; gap: 0.8rem; margin-top: 0.15rem; }
+  .resume-project-entry .resume-proj-links a, .resume-history-grid a { font-size: 8pt; color: #000 !important; text-decoration: underline; text-underline-offset: 2px; }
+}
+
+@media print {
+  .resume-project-entry:last-child { padding-bottom: 0.8rem; }
+}
+
+.resume-project-entry:last-child {
+  padding-bottom: 1rem !important;
+}
+
+.project-role ul { margin-top: 0.5rem; padding-left: 1.1rem; }
+.project-role li { margin-bottom: 0.35rem; }
+
+@media print {
+  .resume-project-entry .resume-proj-desc li { margin-bottom: 0.15rem; }
 }

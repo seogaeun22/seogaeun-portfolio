@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Github, Play } from 'lucide-react';
+import { getGithubLabel } from '@/lib/project-links';
 
 function getYoutubeId(url) {
   if (!url) return null;
@@ -58,20 +59,20 @@ export default function ProjectCard({ project }) {
           <p><strong>인원:</strong> {project.teamSize}</p>
         </div>
         
-        <p className="project-role">
-          <strong>핵심 구현 사항:</strong><br />
-          {project.role}
-        </p>
+        <div className="project-role">
+          <strong>담당 역할</strong>
+          <ul>{project.roleItems.map((role) => <li key={role}>{role}</li>)}</ul>
+        </div>
         
         <div className="project-links">
           {project.github && (
             <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link" onClick={(e) => e.stopPropagation()}>
-              <Github size={18} /> GitHub
+              <Github size={18} /> {getGithubLabel(project.github)}
             </a>
           )}
           {project.playLink && (
             <a href={project.playLink} target="_blank" rel="noopener noreferrer" className="project-link" onClick={(e) => e.stopPropagation()}>
-              <Play size={18} /> Play
+              <Play size={18} /> 플레이 영상
             </a>
           )}
         </div>
