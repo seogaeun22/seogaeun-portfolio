@@ -30,7 +30,10 @@ export default function Resume() {
             <div className="resume-eyebrow">GAME PROGRAMMER · RESUME</div>
             <h1 className="resume-name">서가은 <span>Seo Gaeun</span></h1>
 
-            <div className="resume-education"><strong>한국공학대학교 · 게임공학과</strong></div>
+            <div className="resume-education">
+              <strong>한국공학대학교 · 게임공학과</strong>
+              <span>전체 평점 4.03 / 4.5</span>
+            </div>
             <p className="resume-intro">
               게임공학을 전공하며 C++ 기반 게임 프로그래밍과 게임 클라이언트 개발을 공부하고 있습니다.<br />
               AI 도구를 활용해 구현 방향을 찾고, 직접 실행하고 확인하며 배운 내용을 실제 프로젝트에 적용하고 있습니다.
