@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Github, Play } from 'lucide-react';
+import { Github, Play, ExternalLink } from 'lucide-react';
 import { getGithubLabel } from '@/lib/project-links';
 
 function getYoutubeId(url) {
@@ -65,6 +65,11 @@ export default function ProjectCard({ project }) {
         </div>
         
         <div className="project-links">
+          {project.gameLink && (
+            <a href={project.gameLink} target="_blank" rel="noopener noreferrer" className="project-link" onClick={(e) => e.stopPropagation()}>
+              <ExternalLink size={18} /> itch.io
+            </a>
+          )}
           {project.github && (
             <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link" onClick={(e) => e.stopPropagation()}>
               <Github size={18} /> {getGithubLabel(project.github)}

@@ -45,21 +45,38 @@
 - **GitHub**: [싱글플레이 버전](https://github.com/klop2211/SandyHeroesClient) / [멀티플레이 확장 버전](https://github.com/ehdxorhrl/SandyHeroes_--)
 - **보고서**: [다운로드 (HWP)](https://seogaeun.com/reports/%5B%EC%96%91%EC%8B%9D%5D%202025%20%EA%B2%8C%EC%9E%84%EA%B3%B5%ED%95%99%EA%B3%BC%20%EC%B5%9C%EC%A2%85%20%EB%B3%B4%EA%B3%A0%EC%84%9C.hwp)
 
-### 2. 재밌넥이라도 사랑은 하고 싶어
+### 2. Dragon's Cut
+
+- **개발 기간**: 2026.11.12 ~ 2026.11.15
+- **팀 구성**: 3인 프로젝트
+- **사용 기술**: Unreal Engine, Sequencer, Inworld, Tripo, OpenAI Codex
+- **프로젝트 소개**: 2026 Epic AI MegaJam 출품작. 영화에서 편집되어 사라진 다리를 되찾기 위해 용이 촬영장 뒤편을 탐험하며 퍼즐을 해결하는 판타지 어드벤처 게임입니다.
+- **담당 역할**
+  - AI 활용 개발: OpenAI Codex를 활용한 게임 개발
+  - AI 보이스·모델: Inworld 캐릭터 대사 보이스 및 Tripo 용사 모델 제작
+  - 시네마틱: Unreal Engine 시퀀서로 오프닝·엔딩 제작
+  - 인게임 적용: 자막·음성 및 WeLoveIndies 사운드 적용
+  - QA: 게임 플레이 테스트를 통한 버그 발견
+- **영상**: [플레이 영상](https://youtu.be/CHJFBZ8OWZ4)
+- **게임**: [itch.io](https://seogaeun22.itch.io/dragons-cut)
+
+### 3. 재밌넥이라도 사랑은 하고 싶어
 
 - **개발 기간**: 2026.07.24 ~ 2026.07.26
 - **팀 구성**: 4인 프로젝트
-- **사용 기술**: Unity, STT, LLM, Suno AI
+- **사용 기술**: Unity, STT, LLM, OpenAI Codex, Suno AI
 - **프로젝트 소개**: 소심한 남주인공이 게임잼에서 만난 여주인공과 함께 게임을 만들며 설렘을 느끼는 영상형 연애 시뮬레이션 게임입니다.
 - **담당 역할**
   - 기획: 메인 기획·시나리오
   - 디자인: 게임 화면·미니게임·UI
-  - 개발: 미니 게임 구현·플레이 테스트·버그 수정
+  - AI 활용 개발: OpenAI Codex를 활용한 게임 개발
+  - 개발: 미니 게임 구현
+  - QA: 게임 플레이 테스트 및 버그 발견·수정
   - 콘텐츠: 실사 영상 연기·Suno AI BGM 제작
 - **영상**: [플레이 영상](https://youtu.be/H6Mu9AAfaFk)
 - **GitHub**: [소스 코드](https://github.com/Bazzi4263/MyFirst3D)
 
-### 3. Diet Defense
+### 4. Diet Defense
 
 - **개발 기간**: 2026.07.03 ~ 2026.07.05
 - **팀 구성**: 1인 프로젝트
@@ -71,7 +88,7 @@
   - AI 활용: 리소스 제작 및 개발 보조
 - **영상**: [플레이 영상](https://youtu.be/Jr1Cg_P9-L8?si=2UhyFg3MbtbPymJD)
 
-### 4. The Hollow Bow
+### 5. The Hollow Bow
 
 - **개발 기간**: 2025.06.18 ~ 2025.06.20
 - **팀 구성**: 1인 프로젝트

@@ -122,6 +122,9 @@ export default function Resume() {
                       </ul>
                     </div>
                     <div className="resume-proj-links">
+                      {project.gameLink && (
+                        <a href={project.gameLink} target="_blank" rel="noopener noreferrer">itch.io</a>
+                      )}
                       {(project.details.playLinks ?? (project.playLink ? [{ name: '플레이 영상', url: project.playLink }] : [])).map((link) => (
                         <a href={link.url} target="_blank" rel="noopener noreferrer" key={link.url}>{link.name}</a>
                       ))}

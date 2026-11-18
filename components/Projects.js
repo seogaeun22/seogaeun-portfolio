@@ -78,6 +78,42 @@ function ExperimentCard({ experiment }) {
 
 export const projectsData = [
   {
+    id: 5,
+    title: "Dragon's Cut",
+    genre: "3D Puzzle Adventure / PC",
+    duration: "2026.11.12 ~ 2026.11.15",
+    teamSize: "3인 프로젝트",
+    role: "Inworld 캐릭터 대사 보이스 제작, Tripo 용사 모델 제작, 오프닝·엔딩 시퀀서 제작, 인게임 자막·음성 및 WeLoveIndies 사운드 적용, Codex를 활용한 개발, QA(게임 플레이 테스트 및 버그 발견)",
+    roleItems: [
+      "AI 활용 개발: OpenAI Codex를 활용한 게임 개발",
+      "AI 보이스·모델: Inworld 캐릭터 대사 보이스 및 Tripo 용사 모델 제작",
+      "시네마틱: Unreal Engine 시퀀서로 오프닝·엔딩 제작",
+      "인게임 적용: 자막·음성 및 WeLoveIndies 사운드 적용",
+      "QA: 게임 플레이 테스트를 통한 버그 발견"
+    ],
+    gameLink: "https://seogaeun22.itch.io/dragons-cut",
+    playLink: "https://youtu.be/CHJFBZ8OWZ4",
+    image: "/projects/dragons-cut/thumbnail.png",
+    details: {
+      genre: "3D 퍼즐 어드벤처 / PC (Unreal Engine)",
+      summary: "영화에서 편집되어 사라진 다리를 되찾기 위해, 용이 촬영장 뒤편을 탐험하며 퍼즐을 해결하는 판타지 어드벤처 게임입니다.",
+      goals: [
+        "2026 Epic AI MegaJam 출품",
+        "AI 도구를 활용한 캐릭터 모델·보이스 제작 및 게임 개발",
+        "시퀀서 연출과 자막·음성·사운드를 연결한 게임 경험 구성"
+      ],
+      techStack: ["Unreal Engine", "Sequencer", "Inworld", "Tripo", "OpenAI Codex"],
+      githubLinks: [],
+      playLinks: [
+        { name: "플레이 영상", url: "https://youtu.be/CHJFBZ8OWZ4" }
+      ],
+      audioCredit: {
+        name: "WeLoveIndies",
+        url: "https://www.weloveindies.com/"
+      }
+    }
+  },
+  {
     id: 1,
     title: "Sandy Heroes",
     genre: "3D PvE FPS / PC",
@@ -178,8 +214,8 @@ export const projectsData = [
     genre: "영상형 시뮬레이션 / PC",
     duration: "2026.07.24 ~ 2026.07.26",
     teamSize: "4인 프로젝트",
-    role: "메인 기획 및 시나리오 작성, 게임 화면·미니게임·UI 디자인, 미니 게임 개발, 실사 영상 연기, Suno AI를 활용한 BGM 제작, 플레이 테스트 및 버그 수정 담당",
-    roleItems: ["기획: 메인 기획·시나리오","디자인: 게임 화면·미니게임·UI","개발: 미니 게임 구현·플레이 테스트·버그 수정","콘텐츠: 실사 영상 연기·Suno AI BGM 제작"],
+    role: "OpenAI Codex를 활용한 AI 기반 게임 개발, 메인 기획 및 시나리오 작성, 게임 화면·미니게임·UI 디자인, 미니 게임 개발, 실사 영상 연기, Suno AI를 활용한 BGM 제작, QA(게임 플레이 테스트 및 버그 발견·수정) 담당",
+    roleItems: ["AI 활용 개발: OpenAI Codex를 활용한 게임 개발","기획: 메인 기획·시나리오","디자인: 게임 화면·미니게임·UI","개발: 미니 게임 구현","QA: 게임 플레이 테스트 및 버그 발견·수정","콘텐츠: 실사 영상 연기·Suno AI BGM 제작"],
     github: "https://github.com/Bazzi4263/MyFirst3D",
     playLink: "https://youtu.be/H6Mu9AAfaFk",
     image: "/projects/jamitnex/thumbnail.png",
@@ -190,7 +226,7 @@ export const projectsData = [
         "2026 재밌넥 게임잼 프로젝트 출품",
         "STT 및 LLM 기술을 활용한 텍스트/음성 기반 상호작용형 영상 연애 시뮬레이션 개발"
       ],
-      techStack: ["Unity", "STT", "LLM", "Suno AI"],
+      techStack: ["Unity", "STT", "LLM", "OpenAI Codex", "Suno AI"],
       githubLinks: [
         "https://github.com/Bazzi4263/MyFirst3D"
       ],
@@ -203,7 +239,7 @@ export const projectsData = [
   }
 ];
 
-export const orderedProjectsData = [projectsData[0], projectsData[3], projectsData[2], projectsData[1]];
+export const orderedProjectsData = [projectsData[1], projectsData[0], projectsData[4], projectsData[3], projectsData[2]];
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);

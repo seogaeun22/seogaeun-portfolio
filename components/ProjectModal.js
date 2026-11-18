@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { getGithubLabel } from '@/lib/project-links';
-import { X, Github, Play, Download } from 'lucide-react';
+import { X, Github, Play, Download, ExternalLink } from 'lucide-react';
 
 export default function ProjectModal({ project, onClose }) {
   const modalContentRef = useRef(null);
@@ -112,7 +112,25 @@ export default function ProjectModal({ project, onClose }) {
             </div>
           )}
 
+          {project.details?.audioCredit && (
+            <div className="modal-section">
+              <h4>오디오 출처</h4>
+              <p>
+                효과음과 BGM은{' '}
+                <a href={project.details.audioCredit.url} target="_blank" rel="noopener noreferrer">
+                  {project.details.audioCredit.name}
+                </a>
+                에서 다운로드하여 게임에 적용했습니다.
+              </p>
+            </div>
+          )}
+
           <div className="modal-links">
+            {project.gameLink && (
+              <a href={project.gameLink} target="_blank" rel="noopener noreferrer" className="btn">
+                <ExternalLink size={18} /> itch.io에서 게임 보기
+              </a>
+            )}
             {project.details?.githubLinks?.map((link, idx) => (
               <a key={idx} href={link} target="_blank" rel="noopener noreferrer" className="btn">
                 <Github size={18} /> {getGithubLabel(link)}
