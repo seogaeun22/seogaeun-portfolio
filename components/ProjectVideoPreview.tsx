@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import ImageLightbox from './ImageLightbox';
 
 export default function ProjectVideoPreview({ image, alt, videoId, title }: {
   image: string;
@@ -12,8 +11,12 @@ export default function ProjectVideoPreview({ image, alt, videoId, title }: {
   const [isPreviewing, setIsPreviewing] = useState(false);
 
   return (
-    <ImageLightbox src={image} alt={alt}><span
+    <a
       className="dc-video-preview"
+      href={`https://www.youtube.com/watch?v=${videoId}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${title} 플레이 영상 보기`}
       onMouseEnter={() => setIsPreviewing(true)}
       onMouseLeave={() => setIsPreviewing(false)}
       onFocus={() => setIsPreviewing(true)}
@@ -31,6 +34,6 @@ export default function ProjectVideoPreview({ image, alt, videoId, title }: {
           referrerPolicy="strict-origin-when-cross-origin"
         />
       )}
-    </span></ImageLightbox>
+    </a>
   );
 }
