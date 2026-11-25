@@ -157,24 +157,23 @@ export const projectsData = [
     id: 2,
     category: "general",
     title: "The Hollow Bow",
+    detailPath: "/projects/the-hollow-bow",
     genre: "3D PvE / PC",
     duration: "2025.06.18 ~ 2025.06.20",
     teamSize: "1인 프로젝트",
-    role: "기획 및 블루프린트 기반의 전체 게임플레이 시스템 개발",
-    roleItems: ["기획 및 블루프린트 기반의 전체 게임플레이 시스템 개발"],
-    github: "https://github.com/seogaeun22",
+    role: "1인 기획·Blueprint 게임플레이 제작, 궁수 조작·조준·발사, 몬스터 AI·피격, 왕관 획득·UI 및 외부 에셋 적용",
+    roleItems: ["플레이어: 이동·달리기, 조준 카메라·화살 발사", "전투·상호작용: 몬스터 감지·추적·피격, 왕관 획득·UI", "리소스 통합: 외부 캐릭터·숲·이펙트·사운드 적용"],
+    github: "",
     playLink: "https://youtu.be/K9KKlUR2OVY?si=DSWlTxJqc0U4_vky",
-    image: "https://img.youtube.com/vi/K9KKlUR2OVY/maxresdefault.jpg",
+    image: "/projects/the-hollow-bow/title-current.png",
     details: {
       genre: "3D PvE 게임 / PC (언리얼 엔진)",
-      summary: "불꽃 화살을 쏘는 궁수가 판타지 숲에만 존재하는 신비의 트로피를 구하러 가는 게임입니다.",
+      summary: "불꽃 화살을 쏘는 궁수가 신비의 트로피를 찾아 판타지 숲을 탐험하는 3D PvE 게임입니다. Blueprint로 궁수 전투·몬스터 행동·획득 상호작용을 연결한 1인 프로젝트입니다.",
       goals: [
         "Unreal Engine의 Blueprint를 활용한 PvE 게임 구현",
       ],
-      techStack: ["Unreal Engine 5.3", "Blueprint"],
-      githubLinks: [
-        "https://github.com/seogaeun22"
-      ],
+      techStack: ["Unreal Engine", "Blueprint", "Behavior Tree", "UMG"],
+      githubLinks: [],
       playLinks: [
         { name: "게임 소개 (처음부터)", url: "https://youtu.be/K9KKlUR2OVY?si=DSWlTxJqc0U4_vky" },
         { name: "게임 플레이 (6분 22초부터)", url: "https://youtu.be/K9KKlUR2OVY?t=382" }

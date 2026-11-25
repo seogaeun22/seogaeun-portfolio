@@ -11,7 +11,7 @@ export default function Hero() {
             <span>경험은 오래 남게.</span>
           </h1>
           <p className="hero-subtitle fade-in delay-2">
-            <span className="subtitle-line">AI 도구로 빠르게 실험하고, C++와 DirectX 12, Unreal Engine으로 플레이어의 조작이</span>
+            <span className="subtitle-line">AI 도구로 빠르게 실험하고, C++와 DirectX 12, Unreal Engine으로 플레이어의 조작이</span>{' '}
             <span className="subtitle-line">장면과 감각으로 이어지는 게임을 구현합니다.</span>
           </p>
           <div className="hero-actions fade-in delay-3">
