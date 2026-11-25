@@ -20,11 +20,6 @@ function Capture({ file, caption }: { file: string; caption: string }) {
   </figure>;
 }
 
-function Code({ label, children }: { label: string; children: string }) {
-  return <details className="dc-code"><summary>핵심 코드 보기<span>src/main.cpp · {label}</span></summary>
-    <div className="dc-code-content"><pre><code>{children}</code></pre></div>
-  </details>;
-}
 
 function Section({ id, title, children }: { id: string; title: string; children: ReactNode }) {
   return <section id={id} className="dc-section"><h2>{title}</h2>{children}</section>;
@@ -64,7 +59,7 @@ export default function DietDefensePage() {
             <div><dt>시각·오디오</dt><dd>ChatGPT로 만든 이미지를 선택·적용하고, 축소 과정에서 어색해진 도트는 그림판과 1px 브러시로 직접 보정했습니다. Suno AI로 제작한 BGM을 게임에 적용했습니다.</dd></div>
           </dl>
           <h3>게임 전체에 구현된 범위</h3>
-          <p>3개 스테이지에 각각 6개 웨이브가 있으며, 난이도 3종, 타워 8종, 액티브 스킬 3종, 식단 선택 이벤트와 플레이 기록 저장이 연결됩니다. 아래 코드는 프로젝트에 구현된 동작의 발췌이며, 코드 전체를 직접 수작업으로 작성했다는 의미는 아닙니다.</p>
+          <p>3개 스테이지에 각각 6개 웨이브가 있으며, 난이도 3종, 타워 8종, 액티브 스킬 3종, 식단 선택 이벤트와 플레이 기록 저장이 연결됩니다. OpenAI Codex 등 AI 도구를 활용해 게임 코드를 작성·수정하고, 구현 결과를 직접 검토하며 개발했습니다.</p>
           <h3>AI를 어떤 작업에 사용했는가</h3>
           <dl className="dc-contributions">
             <div><dt>ChatGPT</dt><dd>컨셉·기획 문장을 보완하고 타이틀, 음식 몬스터, 버튼 UI, 클리어 화면 이미지를 제작했습니다. 결과물의 스타일과 화면 적용 상태를 확인하며 골랐습니다.</dd></div>
@@ -77,35 +72,8 @@ export default function DietDefensePage() {
           <p>초기에는 Unity로 대학생활 주제의 게임을 구상했지만, 도구 학습과 제작 시간이 예상보다 길어졌습니다. 제한된 시간에 완성 가능한 범위를 잡기 위해 익숙한 Direct2D로 전환하고, 음식 몬스터와 타워 배치 중심의 게임으로 방향을 정했습니다.</p>
           <h3>2. 타워의 점유 칸 전체를 검사하는 배치</h3>
           <p>길목 이동과 타워 설치 공간을 분리했습니다. 1×1·2×2 타워의 모든 점유 칸에서 경로·장애물·기존 타워와의 겹침을 검사하고, 길목 근처일 때만 설치합니다. 큰 타워도 일부 칸이 길이나 맵 경계를 침범하지 않도록 하는 구조입니다. 설치 미리보기와 실제 배치가 같은 검증 함수를 사용합니다.</p>
-          <Code label="GetPlacementFor · 점유 칸 검사 발췌">{`for (int y = gridY; y < gridY + footprint; ++y)
-{
-    for (int x = gridX; x < gridX + footprint; ++x)
-    {
-        if (pathCells_[y][x] || IsBlockedTerrainCell(x, y) || IsOccupiedCell(x, y))
-        {
-            return false;
-        }
-        nearPath = nearPath || IsNearPathCell(x, y);
-    }
-}
-if (!nearPath)
-{
-    return false;
-}`}</Code>
           <h3>3. 체중과 의지력 사이에서 선택하기</h3>
           <p>적을 막지 못하면 체중이 늘고, 처치하면 의지력을 얻습니다. 의지력은 설치·강화·스킬 구매에 공통으로 사용합니다. 웨이브 사이 식단 이벤트에서는 체중을 줄이는 대신 의지력을 쓰거나, 체중 증가를 감수하고 의지력을 회복하는 선택을 둬 전투 사이에도 자원 판단이 이어지도록 했습니다.</p>
-          <Code label="Update · 패배와 웨이브 종료 판정 발췌">{`if (weight_ > 60.0f)
-{
-    phase_ = Phase::GameOver;
-    message_ = L"체중이 60kg을 넘어버렸습니다";
-    messageTimer_ = 3.0f;
-    SaveGameResult(false);
-    PlaySfx(L"game_over");
-}
-else if (spawnIndex_ >= static_cast<int>(waves_[waveIndex_].queue.size()) && !HasActiveEnemies())
-{
-    ClearWave();
-}`}</Code>
           <h3>4. 새 경로에서 다시 배치하는 스테이지 전환</h3>
           <p>각 스테이지의 마지막 웨이브를 마치면 다음 스테이지로 넘어갑니다. 타워·적·투사체를 비우고 자원과 스킬 상태를 초기화한 뒤 경로를 다시 구성합니다. 이전 배치를 그대로 유지하는 대신 새 맵에 맞춰 방어선을 다시 선택하게 됩니다.</p>
         </Section>
@@ -128,13 +96,8 @@ else if (spawnIndex_ >= static_cast<int>(waves_[waveIndex_].queue.size()) && !Ha
           <p>Codex로 바로 생성한 이미지의 품질과 스타일이 맞지 않아, 이미지 제작은 ChatGPT에서 진행하고 Codex로 게임에 적용하는 방식으로 나눴습니다. 축소하며 어색해진 부분은 그림판에서 크기를 조정한 뒤 1px 브러시로 직접 다듬었습니다.</p>
           <h3>UI 글자 넘침과 맵 가림</h3>
           <p>초기에는 글자가 박스를 벗어나거나 UI가 맵 안쪽으로 튀어나왔습니다. 텍스트 영역과 버튼 크기를 조정하고, 선택 이벤트와 타워 강화·판매 정보를 별도 패널로 분리했습니다. 현재 소스에서는 한 줄 정보의 줄바꿈을 제어하며, 설치 실패 이유도 별도로 표시합니다.</p>
-          <Code label="DrawSingleLineTextAt · 줄바꿈 상태 보존 발췌">{`const DWRITE_WORD_WRAPPING oldWrapping = format->GetWordWrapping();
-format->SetWordWrapping(DWRITE_WORD_WRAPPING_NO_WRAP);
-DrawTextAt(text, rect, format, color);
-format->SetWordWrapping(oldWrapping);`}</Code>
           <h3>처치 보상이 쌓여 이벤트 선택의 의미가 약해짐</h3>
           <p>후반에 의지력이 많이 남는 문제를 확인하고, 선택지 보상은 유지하며 몬스터 처치 보상을 낮추는 방향으로 조정했습니다. 현재 소스에도 난이도별 처치 보상 배율이 분리되어 있습니다. 수치화된 플레이 성과 대신, 자원 사용과 이벤트 선택을 다시 고민하게 하는 조정 방향을 보여줍니다.</p>
-          <p className="dc-source">제작 경험은 기존 작업물 리포트, 구현 설명과 코드는 현재 프로젝트의 README·기획서·src/main.cpp 및 에셋 생성 스크립트를 기준으로 정리했습니다. <a href={`${assets}/diet_defense_work_report.pdf`} target="_blank" rel="noopener noreferrer">기존 작업물 리포트 보기</a></p>
         </Section>
       </article>
     </div>
