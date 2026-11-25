@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import ImageLightbox from '@/components/ImageLightbox';
 import ProjectVideoPreview from '@/components/ProjectVideoPreview';
+import designPrompt from '@/data/jamitnex-design-prompt.json';
 import { Github, Play, Download } from 'lucide-react';
 
 const repository = 'https://github.com/Bazzi4263/MyFirst3D';
@@ -12,7 +13,7 @@ const assets = '/projects/jamitnex';
 
 export const metadata = {
   title: '재밌넥이라도 사랑은 하고 싶어 | 서가은 포트폴리오',
-  description: '실사 영상형 연애 시뮬레이션. 메인 기획·시나리오, 미니게임·UI 제작, Codex와 Suno AI 활용 및 플레이 테스트와 수정 경험을 소개합니다.',
+  description: '실사 영상형 연애 시뮬레이션. 실제 제작 대화를 바탕으로 미니게임·UI의 요구 조건을 정하고, AI 구현 결과를 검토·수정한 과정을 소개합니다.',
   openGraph: {
     title: '재밌넥이라도 사랑은 하고 싶어 | 서가은 포트폴리오',
     description: '게임잼에서 시작된 설렘을 영상과 미니게임으로 풀어낸 4인 프로젝트입니다.',
@@ -36,7 +37,7 @@ function ProjectCapture({ file, alt, caption }: { file: string; alt: string; cap
 function CodeSample({ file, path, children }: { file: string; path: string; children: string }) {
   return (
     <details className="dc-code">
-      <summary>핵심 코드 보기 <span>{file}</span></summary>
+      <summary>구현 근거 · 코드 보기 <span>{file}</span></summary>
       <div className="dc-code-content">
         <a href={source(path)} target="_blank" rel="noopener noreferrer">GitHub에서 원본 보기</a>
         <pre><code>{children}</code></pre>
@@ -85,44 +86,56 @@ export default function JamitnexPage() {
 
         <div className="dc-body">
           <nav className="dc-toc" aria-label="상세 페이지 목차">
-            <a href="#intro">게임 소개</a><a href="#contribution">담당 작업</a><a href="#implementation">핵심 구현과 선택 이유</a><a href="#results">결과 화면·음성</a><a href="#fixes">문제와 수정 경험</a>
+            <a href="#intro">게임 소개</a><a href="#contribution">담당 작업</a><a href="#implementation">요청과 결과 검토</a><a href="#results">결과 화면·음성</a><a href="#fixes">문제 발견과 재지시</a>
           </nav>
           <article className="dc-article" aria-label="재밌넥이라도 사랑은 하고 싶어 프로젝트 상세">
             <section id="contribution" className="dc-section">
               <h2>담당 작업</h2>
-              <p className="dc-takeaway">메인 기획과 시나리오를 바탕으로, 이야기 속 행동을 미니게임과 UI로 만들고 플레이 테스트와 수정을 맡았습니다.</p>
+              <p className="dc-takeaway">이야기 속 행동을 미니게임으로 옮기기 위해 규칙과 화면의 조건을 정했습니다. Codex에 구현을 요청하고, 결과를 확인해 가독성·조작·진행 문제를 다시 수정하도록 지시했습니다.</p>
               <dl className="dc-contributions">
                 <div><dt>기획·시나리오</dt><dd>메인 기획과 시나리오 작성</dd></div>
                 <div><dt>디자인·개발</dt><dd>게임 화면·미니게임·UI 디자인, 미니게임 구현 및 UI 구조 통합</dd></div>
-                <div><dt>AI 활용 개발·QA</dt><dd>OpenAI Codex를 활용한 개발, 게임 플레이 테스트와 버그 발견·수정</dd></div>
+                <div><dt>AI 활용 개발·QA</dt><dd>요구 조건 설정, 구현 결과의 플레이 테스트·문제 발견·재지시. Codex는 코드 작성·수정과 오류 분석을 수행</dd></div>
                 <div><dt>영상·음악</dt><dd>실사 영상 연기, Suno AI를 활용한 BGM 제작</dd></div>
               </dl>
             </section>
 
             <section id="implementation" className="dc-section">
-              <h2>핵심 구현과 선택 이유</h2>
-              <h3>문장 만들기 · 이야기를 직접 완성하는 조작</h3>
-              <p>게임 기획을 이야기하는 장면에서 <strong>‘적 → 라운드 → 차별점’ 순서로 단어를 골라 문장을 완성</strong>합니다. 완성할 문장 안에 빈칸을 배치하고, 같은 색의 빈칸은 같은 선택 단계에 연결했습니다. ‘라운드’를 한 번 고르면 문장 속 두 위치가 함께 채워져, 문장의 반복 표현과 실제 입력 횟수가 어긋나지 않게 했습니다.</p>
-              <p>정답은 JSON으로 분리하고, 현재까지 선택한 단어가 정답의 앞부분과 일치하는지 검사합니다. 마지막에만 채점하는 대신 틀린 선택 즉시 목숨과 피드백을 갱신해, 플레이어가 현재 선택을 바로 이해할 수 있도록 구성했습니다.</p>
+              <h2>요청과 결과 검토</h2>
+              <p className="dc-source">짧은 인용문은 2026.07.25~07.26 제작 대화에서 제가 보낸 요청의 일부를 원문 그대로 발췌했습니다. 과정 설명은 대화와 최종 소스를 대조한 요약이며, AI가 작성한 프롬프트는 별도로 표시했습니다.</p>
+              {/* 요청 근거: 019f9a9d 2026-07-25T18:50:35Z, 019f9b20 2026-07-25T21:38:34Z·21:41:54Z (UTC). */}
+              <h3>사례 1 · 반복 빈칸의 규칙과 색상 구분</h3>
+              <p><strong>의도·요청</strong> · 기획 대사를 직접 완성하도록 정답 문장과 ‘적 → 라운드 → 차별점’의 입력 순서를 정했습니다. 반복되는 ‘라운드’는 한 번의 선택으로 채우도록 <q>색이 같은 빈칸일 경우 단어를 넣으면 같은 색의 뒤에 있는 빈칸도 같이 채워짐</q>이라고 요청했습니다.</p>
+              <p><strong>검토·재지시</strong> · 다른 미니게임과 UI를 통일한 뒤 <q>적 단어가 들어갈 빈칸과 차별점이 들어갈 빈칸의 색이 같아서 혼동스러워. 색을 달리해줘.</q>라고 지적했습니다. 이어 이 문제를 공통 디자인 프롬프트에도 반영하도록 요청했습니다.</p>
+              <p><strong>AI 작업·결과</strong> · Codex가 빈칸별 선택 단계 연결과 색상 수정을 수행했습니다. 최종 구현에서는 ‘라운드’ 두 칸이 함께 채워지고, 세 역할에 서로 다른 색을 사용합니다. 역할별 색 구분과 실제 렌더 화면 확인 규칙은 Codex가 공통 프롬프트에 정리했습니다.</p>
               <ProjectCapture file="word-current.jpg" alt="문장 빈칸과 제한시간이 표시된 단어 선택 미니게임" caption="문장 만들기 · 빈칸 순서에 맞는 단어를 골라 게임 기획을 설명합니다." />
-              <CodeSample file="WordSentenceClickGame.cs · 다음 단어 판정" path={`${runtime}WordSentenceClickGame.cs`}>{`private bool IsValidNextWord(string word)
+              <CodeSample file="WordSentenceClickGame.cs · 반복 빈칸 갱신" path={`${runtime}WordSentenceClickGame.cs`}>{`private void UpdateSentenceBlanks()
 {
-    var words = new List<string>(_selectedWords) { word };
-    var sentence = WordSentenceClickRound.NormalizeSentence(string.Join(" ", words));
-    for (var i = 0; i < _answers.Count; i++)
+    foreach (var blank in _sentenceBlanks)
     {
-        if (_answers[i] == sentence ||
-            _answers[i].StartsWith(sentence + " ", StringComparison.Ordinal))
+        if (blank.Label != null)
         {
-            return true;
+            blank.Label.text = blank.StepIndex < _selectedWords.Count
+                ? _selectedWords[blank.StepIndex]
+                : "_____";
         }
     }
-    return false;
 }`}</CodeSample>
+              <p className="dc-source">구현 근거: <a href={commit('a5a9596')} target="_blank" rel="noopener noreferrer">문장 만들기 미니게임 수정</a> · <a href={source(`${runtime}WordSentenceClickGame.cs`)} target="_blank" rel="noopener noreferrer">최종 빈칸 연결·색상 구현</a></p>
 
-              <h3>발표 카드 · 앞선 대화를 기억하는 미니게임</h3>
-              <p>‘게임 소개·핵심 시스템·플레이 영상’ 세 열에서 카드를 바꿔 발표 내용을 맞춥니다. 앞서 나눈 게임 기획 대화를 카드 선택으로 다시 사용해, 스토리와 미니게임의 맥락을 연결했습니다. 도트 카드와 분홍색·아이보리 UI를 사용하고, 다른 미니게임에도 같은 색상과 안내·결과 표현을 적용했습니다.</p>
-              <p>규칙을 읽는 동안 제한시간을 소모하지 않도록 안내 배너가 사라진 뒤 입력과 타이머를 켭니다. 안내 연출과 실제 플레이의 시작을 분리한 선택입니다.</p>
+              <p>미니게임7의 디자인을 다른 미니게임에도 적용하도록 요청해, Codex가 공통 디자인 프롬프트를 작성했습니다. 색상 혼동에 대한 제 피드백으로 구분·검증 규칙을 보완했으며, 아래는 미니게임3에 실제 전달한 적용본입니다.</p>
+              <details className="dc-code">
+                <summary>공통 디자인 프롬프트 보기 <span>Codex 작성·보완 · 미니게임3 적용본 원문</span></summary>
+                <div className="dc-code-content">
+                  <pre style={{ whiteSpace: 'pre-wrap', overflowWrap: 'anywhere' }}><code>{designPrompt.text}</code></pre>
+                </div>
+              </details>
+
+              {/* 요청 근거: 019f983e 2026-07-25T11:14:21Z·11:22:53Z·11:25:49Z·11:59:09Z (UTC). */}
+              <h3>사례 2 · 발표 카드의 안내와 그림 방향 수정</h3>
+              <p><strong>의도·요청</strong> · 앞선 기획 대화를 떠올리며 ‘게임 소개·핵심 시스템·플레이 영상’을 맞추는 화면을 원했습니다. 구현 결과에서 색이 너무 진하고 안내 문구가 잘 보이지 않는 점을 지적하고, <q>게임 시작 전에 3초 동안 게임 설명 UI로 띄우고</q> 사라지도록 요청했습니다.</p>
+              <p><strong>검토·재지시</strong> · 내용과 맞지 않는 도형 그림은 삭제하도록 하고, 카드 한 장의 시안을 먼저 검토했습니다. 사실적인 시안에서 2D 방향으로 조정한 뒤 <q>이번엔 도트풍으로도 해볼래?</q>라고 요청하고, 도트 시안을 선택했습니다. 안내에는 가로 슬라이드와 대화를 떠올리라는 Tip도 지정했습니다.</p>
+              <p><strong>AI 작업·결과</strong> · AI가 카드 시안을 제작하고, Codex가 선택한 그림과 안내 배너를 Unity에 적용했습니다. 최종 구현은 안내가 사라진 뒤 입력과 타이머를 켜도록 구성되어 있습니다.</p>
               <ProjectCapture file="cards-current.jpg" alt="게임 소개·핵심 시스템·플레이 영상 카드를 고르는 발표 미니게임" caption="발표 구성 · 앞선 대화를 떠올리며 세 열의 카드를 맞춥니다." />
               <CodeSample file="CardPresentationMiniGame.cs · 안내 종료 후 시작 부분 발췌" path="CardPresentationMiniGame/Runtime/CardPresentationMiniGame.cs">{`_instructionOverlay.SetActive(false);
 _instructionGroup.blocksRaycasts = false;
@@ -133,8 +146,8 @@ _running = true;`}</CodeSample>
 
               <h3>AI를 활용한 작업</h3>
               <dl className="dc-contributions">
-                <div><dt>OpenAI Codex</dt><dd>미니게임을 포함한 게임 개발·수정에 활용했습니다. 기획·UI 디자인과 구현 결과의 플레이 테스트·버그 수정은 제 담당 작업으로 진행했습니다.</dd></div>
-                <div><dt>Suno AI</dt><dd>게임에 사용할 BGM 제작에 활용했습니다. 타이틀과 미니게임용 음악을 게임에 연결하고, 각 장면에 맞춰 재생·정지 및 음량을 조정했습니다.</dd></div>
+                <div><dt>OpenAI Codex</dt><dd>제가 규칙·디자인 방향과 수정 기준을 정하고 결과를 검토했습니다. Codex는 코드 작성·오류 분석·수정과 공통 디자인 프롬프트 정리를 수행했습니다.</dd></div>
+                <div><dt>Suno AI</dt><dd>제가 가사 없는 러블리한 타이틀 BGM을 요청하고, 너무 잔잔한 결과에 분위기 조정을 지시했습니다. Codex가 Suno용 한·영 프롬프트를 작성했고, Suno AI로 제작한 BGM을 게임에 적용했습니다.</dd></div>
               </dl>
               <p className="dc-source">관련 소스: <a href={source('WordSentenceClickPrototype/Resources/WordSentenceClickPrototype/WordSentenceClickConfig.json')} target="_blank" rel="noopener noreferrer">문장·제한시간 설정</a> · <a href={source('CardPresentationMiniGame/Runtime/CardPresentationMiniGameUi.cs')} target="_blank" rel="noopener noreferrer">공통 UI 표현</a> · <a href={commit('81fc28b')} target="_blank" rel="noopener noreferrer">타이틀 BGM 적용 이력</a></p>
             </section>
@@ -150,25 +163,12 @@ _running = true;`}</CodeSample>
             </section>
 
             <section id="fixes" className="dc-section">
-              <h2>실제 문제와 수정 경험</h2>
-              <h3>문장에 같은 단어가 두 번 나오는 경우</h3>
-              <p>완성 문장에는 ‘라운드’가 두 번 등장하지만 선택 단계는 세 번입니다. 단순히 선택 단어를 이어 붙이는 표시 방식으로는 문장 안의 위치와 반복 관계를 보여주기 어려웠습니다. 빈칸마다 <strong>선택 단계 인덱스</strong>를 부여하고 두 ‘라운드’ 빈칸에 같은 인덱스를 사용하도록 수정해, 한 번의 선택으로 두 위치가 함께 갱신되게 했습니다.</p>
-              <CodeSample file="WordSentenceClickGame.cs · 빈칸 갱신" path={`${runtime}WordSentenceClickGame.cs`}>{`private void UpdateSentenceBlanks()
-{
-    foreach (var blank in _sentenceBlanks)
-    {
-        if (blank.Label != null)
-        {
-            blank.Label.text = blank.StepIndex < _selectedWords.Count
-                ? _selectedWords[blank.StepIndex]
-                : "_____";
-        }
-    }
-}`}</CodeSample>
-              <p className="dc-source">수정 이력: <a href={commit('a5a9596')} target="_blank" rel="noopener noreferrer">문장 만들기 미니게임 수정</a></p>
-
-              <h3>미니게임 중 ESC 메뉴와 일시정지 처리</h3>
-              <p>스토리에서 실행한 미니게임은 기존 ESC 처리에서 메뉴로 돌아갈 경로가 없었습니다. ESC 입력을 일시정지 메뉴로 연결하고, 공통 일시정지 상태를 각 미니게임에서 확인하도록 수정했습니다. 메뉴가 열려 있는 동안 타이머·입력 처리를 멈추고, 재생 중이던 BGM은 메뉴를 닫을 때 이어 재생합니다. 타이틀·흐름도로 돌아가는 경로도 메뉴에 통합했습니다.</p>
+              <h2>문제 발견과 재지시</h2>
+              {/* 요청 근거: 019f9b9c 2026-07-26T01:05:25Z·01:16:57Z. 원인 분석은 Codex 응답 및 최종 소스로 확인. */}
+              <h3>사례 3 · ESC 메뉴가 보이지 않는 문제 재보고</h3>
+              <p><strong>의도·요청</strong> · 미니게임 중에도 설정과 이동 메뉴를 쓸 수 있도록 <q>미니게임할 때에도 ESC키 눌러서 조작 가능하게 해줘.</q>라고 요청했습니다. 흐름도에서 완료한 미니게임에 다시 진입할 때의 오류도 함께 보고했습니다.</p>
+              <p><strong>검토·재지시</strong> · 첫 수정 뒤에도 <q>ESC 키를 누르면 타이머가 일시정지되지만 ESC UI가 뜨지 않아.</q>라고 재보고했습니다. 테스트용 복귀 로직의 영향일 수 있다는 제 추측과 달리, Codex는 메뉴가 미니게임 Canvas 뒤에 가려진 것을 원인으로 분석했습니다.</p>
+              <p><strong>AI 작업·결과</strong> · Codex가 ESC 메뉴를 더 높은 순서의 독립 Canvas로 수정하고, 요청한 테스트 진입 기능도 제거했습니다. 최종 소스에서는 메뉴 표시와 타이머·입력·BGM의 일시정지를 연결하고, 닫으면 재개하도록 처리합니다.</p>
               <CodeSample file="CardPresentationMiniGame.cs · Update 앞부분 발췌" path="CardPresentationMiniGame/Runtime/CardPresentationMiniGame.cs">{`if (WordSentenceClickBootstrap.IsMiniGamePaused || !_running || _mistakeVideoPlaying)
 {
     return;
@@ -177,8 +177,7 @@ _running = true;`}</CodeSample>
 _remainingTime = Mathf.Max(0f, _remainingTime - Time.unscaledDeltaTime);
 UpdateTimer();`}</CodeSample>
 
-              <h3>흐름도로 미니게임을 다시 열 때의 호감도 처리</h3>
-              <p>같은 장면을 다시 플레이하면 이전 결과의 호감도 변화가 남은 채 새 결과가 반영될 수 있습니다. 장면별로 적용한 호감도 변화량을 저장하고, 흐름도에서 해당 미니게임을 다시 열 때 이전 변화량을 되돌린 뒤 완료 상태를 해제하도록 수정했습니다.</p>
+              <p>같이 보고한 재진입 오류에 대해서는 Codex가 완료 상태를 해제하고 이전 호감도 변화량을 되돌리도록 수정했습니다. 재플레이 문제를 발견한 것은 제 역할이며, 변화량을 저장·복원하는 해결 방식은 Codex가 구현했습니다.</p>
               <CodeSample file="VisualNovelRouteGame.cs · 재진입 처리 부분 발췌" path={`${runtime}VisualNovelRouteGame.cs`}>{`if (HasMiniGameSlot(scene))
 {
     _completedMiniGameSceneIds.Remove(scene.id);
