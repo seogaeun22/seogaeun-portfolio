@@ -81,6 +81,7 @@ export default function ProjectModal({ project, onClose }) {
             </div>
           )}
 
+
           <div className="modal-section">
             <h4>기본 정보</h4>
             <ul>

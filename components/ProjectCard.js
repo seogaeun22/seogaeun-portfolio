@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import { Github, Play, ExternalLink } from 'lucide-react';
 import { getGithubLabel } from '@/lib/project-links';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 function getYoutubeId(url) {
   if (!url) return null;
@@ -20,13 +22,15 @@ function getYoutubeId(url) {
   }
 }
 
-export default function ProjectCard({ project }) {
+export default function ProjectCard({ project, onSelect }) {
+  const router = useRouter();
   const [isPreviewing, setIsPreviewing] = useState(false);
   const youtubeId = getYoutubeId(project.playLink);
 
   return (
-    <div
-      className="project-card"
+    <article
+      className={`project-card${project.category === 'ai' ? ' project-card-ai' : ''}`}
+      onClick={() => project.detailPath ? router.push(project.detailPath) : onSelect(project)}
       onMouseEnter={() => setIsPreviewing(true)}
       onMouseLeave={() => setIsPreviewing(false)}
       onFocus={() => setIsPreviewing(true)}
@@ -53,6 +57,7 @@ export default function ProjectCard({ project }) {
           <h3 className="project-title">{project.title}</h3>
           <span className="project-genre">{project.genre}</span>
         </div>
+        <p className="project-summary">{project.details.summary}</p>
         
         <div className="project-info">
           <p><strong>기간:</strong> {project.duration}</p>
@@ -65,6 +70,11 @@ export default function ProjectCard({ project }) {
         </div>
         
         <div className="project-links">
+          {project.detailPath ? (
+            <Link href={project.detailPath} className="project-detail-button" onClick={event => event.stopPropagation()} aria-label={`${project.title} 상세 보기`}>상세 보기</Link>
+          ) : (
+            <button type="button" className="project-detail-button" onClick={(event) => { event.stopPropagation(); onSelect(project); }} aria-label={`${project.title} 상세 보기`}>상세 보기</button>
+          )}
           {project.gameLink && (
             <a href={project.gameLink} target="_blank" rel="noopener noreferrer" className="project-link" onClick={(e) => e.stopPropagation()}>
               <ExternalLink size={18} /> itch.io
@@ -82,6 +92,6 @@ export default function ProjectCard({ project }) {
           )}
         </div>
       </div>
-    </div>
+    </article>
   );
 }

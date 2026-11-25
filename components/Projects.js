@@ -79,31 +79,40 @@ function ExperimentCard({ experiment }) {
 export const projectsData = [
   {
     id: 5,
+    category: "ai",
+    aiFocus: "Codex 게임 개발 · AI 보이스·3D 모델 제작",
+    aiUsage: [
+      { tool: "OpenAI Codex", usage: "게임 코드 구현에 활용" },
+      { tool: "Inworld", usage: "캐릭터 대사 보이스 제작" },
+      { tool: "Tripo", usage: "용사 캐릭터 3D 모델 제작" }
+    ],
     title: "Dragon's Cut",
+    detailPath: "/projects/dragons-cut",
+    github: "https://github.com/dionme2622/Epic_AI_MegaJam",
     genre: "3D Puzzle Adventure / PC",
     duration: "2026.11.12 ~ 2026.11.15",
     teamSize: "3인 프로젝트",
-    role: "Inworld 캐릭터 대사 보이스 제작, Tripo 용사 모델 제작, 오프닝·엔딩 시퀀서 제작, 인게임 자막·음성 및 WeLoveIndies 사운드 적용, Codex를 활용한 개발, QA(게임 플레이 테스트 및 버그 발견)",
+    role: "Codex를 활용한 개발, 오프닝·엔딩 시퀀서 제작, Inworld 캐릭터 보이스 및 Tripo 용사 모델 제작, 자막·음성 및 WeLoveIndies 사운드 적용, 플레이 테스트와 음성·모델 적용 오류 수정",
     roleItems: [
-      "AI 활용 개발: OpenAI Codex를 활용한 게임 개발",
+      "AI 활용 개발: OpenAI Codex를 활용한 게임 개발과 플레이 테스트",
       "AI 보이스·모델: Inworld 캐릭터 대사 보이스 및 Tripo 용사 모델 제작",
       "시네마틱: Unreal Engine 시퀀서로 오프닝·엔딩 제작",
       "인게임 적용: 자막·음성 및 WeLoveIndies 사운드 적용",
-      "QA: 게임 플레이 테스트를 통한 버그 발견"
+      "오류 수정: 대사 음성 연결 누락과 모델 디테일 이상 수정"
     ],
     gameLink: "https://seogaeun22.itch.io/dragons-cut",
     playLink: "https://youtu.be/CHJFBZ8OWZ4",
     image: "/projects/dragons-cut/thumbnail.png",
     details: {
       genre: "3D 퍼즐 어드벤처 / PC (Unreal Engine)",
-      summary: "영화에서 편집되어 사라진 다리를 되찾기 위해, 용이 촬영장 뒤편을 탐험하며 퍼즐을 해결하는 판타지 어드벤처 게임입니다.",
+      summary: "그래픽 설정을 바꾸며 숨겨진 단서를 찾는 3D 퍼즐 어드벤처 게임입니다. 영화에서 편집되어 사라진 다리를 되찾기 위해 드래곤이 촬영장 뒤편을 탐험합니다. OpenAI Codex를 활용해 개발하고, Inworld로 캐릭터 보이스를, Tripo로 용사 모델을 제작했습니다.",
       goals: [
         "2026 Epic AI MegaJam 출품",
         "AI 도구를 활용한 캐릭터 모델·보이스 제작 및 게임 개발",
         "시퀀서 연출과 자막·음성·사운드를 연결한 게임 경험 구성"
       ],
       techStack: ["Unreal Engine", "Sequencer", "Inworld", "Tripo", "OpenAI Codex"],
-      githubLinks: [],
+      githubLinks: ["https://github.com/dionme2622/Epic_AI_MegaJam"],
       playLinks: [
         { name: "플레이 영상", url: "https://youtu.be/CHJFBZ8OWZ4" }
       ],
@@ -115,6 +124,7 @@ export const projectsData = [
   },
   {
     id: 1,
+    category: "general",
     title: "Sandy Heroes",
     genre: "3D PvE FPS / PC",
     duration: "2024.09 ~ 2025.08",
@@ -144,6 +154,7 @@ export const projectsData = [
   },
   {
     id: 2,
+    category: "general",
     title: "The Hollow Bow",
     genre: "3D PvE / PC",
     duration: "2025.06.18 ~ 2025.06.20",
@@ -171,6 +182,12 @@ export const projectsData = [
   },
   {
     id: 3,
+    category: "ai",
+    aiFocus: "1인 개발에 AI 도구를 연결한 제작 경험",
+    aiUsage: [
+      { tool: "ChatGPT · Codex", usage: "기획과 구현 보조" },
+      { tool: "Suno AI", usage: "오디오 리소스 제작 보조" }
+    ],
     title: "Diet Defense",
     genre: "2D Tower Defense / PC",
     duration: "2026.07.03 ~ 2026.07.05",
@@ -210,6 +227,12 @@ export const projectsData = [
   },
   {
     id: 4,
+    category: "ai",
+    aiFocus: "AI를 활용한 게임 개발과 BGM 제작",
+    aiUsage: [
+      { tool: "OpenAI Codex", usage: "게임 개발에 활용" },
+      { tool: "Suno AI", usage: "게임 BGM 제작" }
+    ],
     title: "재밌넥이라도 사랑은 하고 싶어",
     genre: "영상형 시뮬레이션 / PC",
     duration: "2026.07.24 ~ 2026.07.26",
@@ -224,9 +247,9 @@ export const projectsData = [
       summary: "소심한 남주인공(플레이어)이 '재밌넥' 게임잼에서 자신에게 말을 걸어준 여주인공과 함께 게임을 만들며 설렘을 느끼는 내용의 영상형 연애 시뮬레이션 게임입니다.",
       goals: [
         "2026 재밌넥 게임잼 프로젝트 출품",
-        "STT 및 LLM 기술을 활용한 텍스트/음성 기반 상호작용형 영상 연애 시뮬레이션 개발"
+        "영상형 연애 시뮬레이션의 기획·시나리오 및 미니게임 제작"
       ],
-      techStack: ["Unity", "STT", "LLM", "OpenAI Codex", "Suno AI"],
+      techStack: ["Unity", "OpenAI Codex", "Suno AI"],
       githubLinks: [
         "https://github.com/Bazzi4263/MyFirst3D"
       ],
@@ -240,6 +263,9 @@ export const projectsData = [
 ];
 
 export const orderedProjectsData = [projectsData[1], projectsData[0], projectsData[4], projectsData[3], projectsData[2]];
+
+export const aiProjectsData = [projectsData[0], projectsData[4], projectsData[3]];
+export const generalProjectsData = projectsData.filter(project => project.category === 'general');
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -255,17 +281,27 @@ export default function Projects() {
   return (
     <section id="projects" className="section">
       <div className="container">
-        <h2 className="section-title">
-          My <span>Projects</span>
-        </h2>
+        <section id="ai-projects" className="project-group project-group-ai" aria-labelledby="ai-projects-title">
+          <div className="project-group-heading">
+            <h2 id="ai-projects-title">AI 활용 프로젝트</h2>
+          </div>
+          <div className="projects-grid ai-projects-grid">
+            {aiProjectsData.map(project => (
+              <ProjectCard key={project.id} project={project} onSelect={handleProjectClick} />
+            ))}
+          </div>
+        </section>
 
-        <div className="projects-grid">
-          {orderedProjectsData.map(project => (
-            <div key={project.id} onClick={() => handleProjectClick(project)} style={{ cursor: 'pointer' }}>
-              <ProjectCard project={project} />
-            </div>
-          ))}
-        </div>
+        <section id="general-projects" className="project-group" aria-labelledby="general-projects-title">
+          <div className="project-group-heading">
+            <h2 id="general-projects-title">일반 개발 프로젝트</h2>
+          </div>
+          <div className="projects-grid general-projects-grid">
+            {generalProjectsData.map(project => (
+              <ProjectCard key={project.id} project={project} onSelect={handleProjectClick} />
+            ))}
+          </div>
+        </section>
 
         <div className="experiments-section">
           <div className="experiments-heading">

@@ -1,4 +1,4 @@
-import { ArrowRight, FileText } from 'lucide-react';
+import { FileText } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -15,8 +15,8 @@ export default function Hero() {
             <span className="subtitle-line">장면과 감각으로 이어지는 게임을 구현합니다.</span>
           </p>
           <div className="hero-actions fade-in delay-3">
-            <a href="#projects" className="btn btn-primary">
-              프로젝트 보기 <ArrowRight size={18} />
+            <a href="#ai-projects" className="btn btn-primary">
+              AI 활용 프로젝트 보기
             </a>
             <a href="/resume" className="btn">
               이력서 보기 <FileText size={18} />
