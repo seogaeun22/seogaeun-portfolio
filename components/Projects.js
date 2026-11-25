@@ -183,23 +183,25 @@ export const projectsData = [
   {
     id: 3,
     category: "ai",
-    aiFocus: "1인 개발에 AI 도구를 연결한 제작 경험",
+    aiFocus: "기획·검토·조정과 AI를 활용한 Direct2D 게임 제작",
     aiUsage: [
-      { tool: "ChatGPT · Codex", usage: "기획과 구현 보조" },
-      { tool: "Suno AI", usage: "오디오 리소스 제작 보조" }
+      { tool: "ChatGPT", usage: "기획 보완과 이미지 제작" },
+      { tool: "Codex", usage: "코드 작성·수정, 에셋 적용과 빌드 확인" },
+      { tool: "Suno AI", usage: "게임 BGM 제작" }
     ],
     title: "Diet Defense",
+    detailPath: "/projects/diet-defense",
     genre: "2D Tower Defense / PC",
     duration: "2026.07.03 ~ 2026.07.05",
     teamSize: "1인 프로젝트",
-    role: "기획, Direct2D 기반 게임 구현, 타워·웨이브·스킬·이벤트 시스템 제작 및 AI 도구를 활용한 리소스 제작/개발 보조",
-    roleItems: ["기획·개발: Direct2D 기반 게임 기획 및 구현","시스템: 타워·웨이브·스킬·이벤트 제작","AI 활용: 리소스 제작 및 개발 보조"],
+    role: "컨셉·기획 검토, Codex를 활용한 Direct2D 구현, AI 이미지 선택·도트 보정, UI·밸런스 조정 및 Suno BGM 적용",
+    roleItems: ["기획·판단: 컨셉과 제작 방향 결정, 기획 검토","AI 활용 개발: Codex로 시스템 구현·수정 및 빌드 확인","리소스·조정: AI 이미지 적용·도트 보정, UI·밸런스 조정, BGM 적용"],
     github: "",
     playLink: "https://youtu.be/Jr1Cg_P9-L8?si=2UhyFg3MbtbPymJD",
-    image: "/projects/diet-defense/thumbnail.png",
+    image: "/projects/diet-defense/title-current.png",
     details: {
       genre: "2D 타워 디펜스 게임 / PC",
-      summary: "다이어트 코어를 지키며 몰려오는 음식 몬스터를 막아내는 Direct2D 기반 2D 타워 디펜스 게임입니다.",
+      summary: "음식 몬스터를 막으며 체중과 의지력을 관리하는 Direct2D 타워 디펜스입니다. AI를 활용해 1인 제작하고, 이미지·UI·자원 밸런스를 검토하며 조정했습니다.",
       goals: [
         "Direct2D 기반 2D 타워 디펜스 게임 구현",
         "타워 배치, 타워 강화, 판매, 자원 관리 시스템 제작",
