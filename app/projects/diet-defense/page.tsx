@@ -53,7 +53,7 @@ export default function DietDefensePage() {
     </div>
     <div className="dc-body">
       <nav className="dc-toc" aria-label="상세 페이지 목차">
-        <a href="#introduction">게임 소개</a><a href="#contribution">담당 작업</a><a href="#planning">기획서 작성</a><a href="#improvements">요청·검토·수정 사례</a><a href="#implementation">구현 근거</a><a href="#results">결과 화면·사운드</a>
+        <a href="#introduction">게임 소개</a><a href="#contribution">담당 작업</a><a href="#planning">기획서 작성</a><a href="#improvements">요청·검토·수정 사례</a><a href="#results">결과 화면·사운드</a>
       </nav>
       <article className="dc-article" aria-label="Diet Defense 제작 경험">
         <Section id="contribution" title="담당 작업">
@@ -100,22 +100,11 @@ export default function DietDefensePage() {
           <p>정적인 몬스터에 움직임을 주려고 “몬스터도 데미지를 받을때나 이동할 때 살짝 마이크로 애니메이션이 있으면 좋을 것 같아.”라고 요청했습니다. Codex가 이동 시 들썩임과 피격 시 흔들림·크기 변화를 추가했지만, 광역 피해를 받을 때 반응이 과해 보였습니다.</p>
           <p><strong>실제 후속 요청 발췌:</strong> “광역 데미지 입는 포탑에 데미지를 입으면 심하게 흔들리는 것 처럼 보여. 이걸 보완해줘.” Codex는 연속 피해로 피격 타이머가 반복 갱신되는 원인을 확인하고, 유산소 트랙의 피격 반응만 약하게 조정했습니다. 현재 코드에서도 일반 공격과 광역 피해의 반응 강도를 구분합니다.</p>
         </Section>
-        <Section id="implementation" title="구현 근거 · Codex가 작성·수정한 코드">
-          <p>아래는 요청이 구현에 반영된 방식을 확인하는 보충 근거입니다. 문제 발견과 수정 조건은 제가 전달했고, 코드 작성·수정은 Codex를 활용했습니다.</p>
-          <details className="dc-code">
-            <summary>배치 판정과 선택 이벤트 구조 보기<span>src/main.cpp · CanPlaceAt / EventForWave</span></summary>
-            <div className="dc-code-content"><p style={{ padding: '1.25rem' }}>배치 시 타워가 차지하는 모든 칸에서 경로·장애물·기존 타워와의 겹침을 검사하고, 체중계 이미지 영역도 제외합니다. 선택 이벤트는 15개 목록에서 스테이지와 웨이브 번호로 순서를 계산해, 스테이지마다 다른 5개를 배정합니다.</p></div>
-          </details>
-          <details className="dc-code">
-            <summary>광역 피해의 피격 반응 조정 보기<span>src/main.cpp · DamageEnemy 발췌</span></summary>
-            <div className="dc-code-content"><pre><code>{`const float hitReaction = source == TurretKind::Cardio ? 0.035f : 0.16f;
-enemy.hitTimer = std::max(enemy.hitTimer, hitReaction);`}</code></pre></div>
-          </details>
-        </Section>
         <Section id="results" title="결과 화면·사운드">
           <p>현재 Release 실행 파일을 타이틀부터 실행하고, 쉬움 난이도의 Stage 1에서 직접 플레이한 화면입니다.</p>
           <Capture file="tower-management" caption="타워 배치와 강화 · 의지력을 사용해 홈트 타워를 Lv.2로 강화한 Stage 1 화면" />
           <Capture file="wave-current" caption="Stage 1 두 번째 웨이브 전투 · 길목을 따라오는 음식 몬스터를 배치한 타워로 방어" />
+          <Capture file="boss-entrance" caption="Stage 1 네 번째 웨이브 · ‘야식 배달’ 보스 등장 시 이름과 ‘잡몹을 추가 배달합니다’ 능력 안내 표시" />
           <Capture file="event-current" caption="웨이브 종료 후 선택 이벤트 · 체중과 의지력의 변화를 비교해 다음 행동 선택" />
           <figure className="dc-voice-sample"><figcaption>Snack Siege Shuffle · 게임 BGM<span>Suno AI로 제작해 게임에 적용한 배경음악입니다. 대사 음성이 아닌 음악 샘플입니다.</span></figcaption>
             <audio controls preload="none" aria-label="Diet Defense 배경음악 듣기"><source src={`${assets}/snack-siege-shuffle.mp3`} type="audio/mpeg" />브라우저가 오디오 재생을 지원하지 않습니다.</audio>
