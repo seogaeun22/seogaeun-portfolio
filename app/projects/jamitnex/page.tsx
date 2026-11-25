@@ -97,9 +97,6 @@ export default function JamitnexPage() {
                 <div><dt>AI 활용 개발·QA</dt><dd>OpenAI Codex를 활용한 개발, 게임 플레이 테스트와 버그 발견·수정</dd></div>
                 <div><dt>영상·음악</dt><dd>실사 영상 연기, Suno AI를 활용한 BGM 제작</dd></div>
               </dl>
-              <h3>프로젝트 전체 구현과의 구분</h3>
-              <p>팀이 함께 만든 게임에는 실사 영상 분기, 호감도, 흐름도, 채팅, STT·LLM을 사용하는 입력·판정 기능이 들어 있습니다. 제 기여는 <strong>기획·시나리오, 미니게임·UI, 실사 연기·BGM, 플레이 테스트와 수정</strong>이며, 아래에서는 이 범위와 연결되는 구현 및 수정 이력을 소개합니다.</p>
-              <p className="dc-source">담당 범위: <a href="https://seogaeun.com/#ai-projects" target="_blank" rel="noopener noreferrer">기존 포트폴리오</a> · 구현 이력: <a href={commit('50eb976')} target="_blank" rel="noopener noreferrer">미니게임 UI 디자인 및 구조 통합</a></p>
             </section>
 
             <section id="implementation" className="dc-section">
@@ -107,6 +104,7 @@ export default function JamitnexPage() {
               <h3>문장 만들기 · 이야기를 직접 완성하는 조작</h3>
               <p>게임 기획을 이야기하는 장면에서 <strong>‘적 → 라운드 → 차별점’ 순서로 단어를 골라 문장을 완성</strong>합니다. 완성할 문장 안에 빈칸을 배치하고, 같은 색의 빈칸은 같은 선택 단계에 연결했습니다. ‘라운드’를 한 번 고르면 문장 속 두 위치가 함께 채워져, 문장의 반복 표현과 실제 입력 횟수가 어긋나지 않게 했습니다.</p>
               <p>정답은 JSON으로 분리하고, 현재까지 선택한 단어가 정답의 앞부분과 일치하는지 검사합니다. 마지막에만 채점하는 대신 틀린 선택 즉시 목숨과 피드백을 갱신해, 플레이어가 현재 선택을 바로 이해할 수 있도록 구성했습니다.</p>
+              <ProjectCapture file="word-current.jpg" alt="문장 빈칸과 제한시간이 표시된 단어 선택 미니게임" caption="문장 만들기 · 빈칸 순서에 맞는 단어를 골라 게임 기획을 설명합니다." />
               <CodeSample file="WordSentenceClickGame.cs · 다음 단어 판정" path={`${runtime}WordSentenceClickGame.cs`}>{`private bool IsValidNextWord(string word)
 {
     var words = new List<string>(_selectedWords) { word };
@@ -125,6 +123,7 @@ export default function JamitnexPage() {
               <h3>발표 카드 · 앞선 대화를 기억하는 미니게임</h3>
               <p>‘게임 소개·핵심 시스템·플레이 영상’ 세 열에서 카드를 바꿔 발표 내용을 맞춥니다. 앞서 나눈 게임 기획 대화를 카드 선택으로 다시 사용해, 스토리와 미니게임의 맥락을 연결했습니다. 도트 카드와 분홍색·아이보리 UI를 사용하고, 다른 미니게임에도 같은 색상과 안내·결과 표현을 적용했습니다.</p>
               <p>규칙을 읽는 동안 제한시간을 소모하지 않도록 안내 배너가 사라진 뒤 입력과 타이머를 켭니다. 안내 연출과 실제 플레이의 시작을 분리한 선택입니다.</p>
+              <ProjectCapture file="cards-current.jpg" alt="게임 소개·핵심 시스템·플레이 영상 카드를 고르는 발표 미니게임" caption="발표 구성 · 앞선 대화를 떠올리며 세 열의 카드를 맞춥니다." />
               <CodeSample file="CardPresentationMiniGame.cs · 안내 종료 후 시작 부분 발췌" path="CardPresentationMiniGame/Runtime/CardPresentationMiniGame.cs">{`_instructionOverlay.SetActive(false);
 _instructionGroup.blocksRaycasts = false;
 _introRoutine = null;
@@ -142,12 +141,8 @@ _running = true;`}</CodeSample>
 
             <section id="results" className="dc-section">
               <h2>결과 화면·음성</h2>
-              <p>타이틀에서 시작해 진행한 PC 실행본의 플레이 화면입니다. 실사 영상, 문장 만들기, 발표 카드가 각각 다른 방식으로 이야기에 참여하도록 구성되어 있습니다.</p>
+              <p>타이틀에서 시작해 진행한 PC 실행본의 실사 영상 플레이 화면과 음성·BGM입니다.</p>
               <ProjectCapture file="story-current.jpg" alt="등장인물과 자막이 표시된 실사 영상 플레이 화면" caption="실사 영상 · 게임잼에서 만난 인물들의 대화를 따라 이야기가 진행됩니다." />
-              <div className="dc-capture-grid">
-                <ProjectCapture file="word-current.jpg" alt="문장 빈칸과 제한시간이 표시된 단어 선택 미니게임" caption="문장 만들기 · 빈칸 순서에 맞는 단어를 골라 게임 기획을 설명합니다." />
-                <ProjectCapture file="cards-current.jpg" alt="게임 소개·핵심 시스템·플레이 영상 카드를 고르는 발표 미니게임" caption="발표 구성 · 앞선 대화를 떠올리며 세 열의 카드를 맞춥니다." />
-              </div>
               <h3>실사 영상의 음성과 게임 BGM</h3>
               <AudioSample file="prologue-dialogue.mp3" title="프롤로그 · 실사 영상 음성" description="팀이 촬영한 프롤로그 영상의 원음 중 30초 발췌입니다." />
               <AudioSample file="title-bgm.mp3" title="타이틀 BGM" description="Suno AI를 활용해 제작하고 타이틀에 적용한 음악입니다." />
