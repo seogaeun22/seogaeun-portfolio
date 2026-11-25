@@ -3,6 +3,10 @@ import ImageLightbox from '@/components/ImageLightbox';
 import ProjectVideoPreview from '@/components/ProjectVideoPreview';
 import { Download, FileText, Play } from 'lucide-react';
 import type { ReactNode } from 'react';
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
+import Markdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 export const metadata = {
   title: 'Diet Defense | 서가은 포트폴리오',
@@ -10,6 +14,7 @@ export const metadata = {
 };
 
 const assets = '/projects/diet-defense';
+const plan = readFileSync(path.join(process.cwd(), 'data/diet-defense-plan.md'), 'utf8');
 
 function Capture({ file, caption }: { file: string; caption: string }) {
   return <figure className="dc-figure">
@@ -60,6 +65,19 @@ export default function DietDefensePage() {
           </dl>
           <h3>게임 전체에 구현된 범위</h3>
           <p>3개 스테이지에 각각 6개 웨이브가 있으며, 난이도 3종, 타워 8종, 액티브 스킬 3종, 선택 이벤트와 플레이 기록 저장이 연결됩니다.</p>
+          <details className="dc-code dc-plan">
+            <summary>다이어트 디펜스 기획서 펼쳐 보기<span>제작 당시 기획서</span></summary>
+            <div className="dc-plan-content">
+              <p className="dc-source">제가 정한 컨셉과 요구 조건을 전달하고, Codex를 이용해 기획서.md 파일을 만들었습니다. 일부 규칙·수치·조작은 최종 게임과 다를 수 있습니다.</p>
+              <Markdown remarkPlugins={[remarkGfm]} components={{
+                h1: ({ children }) => <h3>{children}</h3>,
+                h2: ({ children }) => <h4>{children}</h4>,
+                h3: ({ children }) => <h5>{children}</h5>,
+                h4: ({ children }) => <h6>{children}</h6>,
+                table: ({ children }) => <div className="dc-plan-table" tabIndex={0} role="region" aria-label="기획서 표"><table>{children}</table></div>,
+              }}>{plan}</Markdown>
+            </div>
+          </details>
           <h3>AI를 어떤 작업에 사용했는가</h3>
           <dl className="dc-contributions">
             <div><dt>ChatGPT</dt><dd>컨셉·기획 문장을 보완하고 타이틀, 음식 몬스터, 버튼 UI, 클리어 화면 이미지를 제작했습니다. 결과물의 스타일과 화면 적용 상태를 확인하며 골랐습니다.</dd></div>

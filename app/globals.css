@@ -54,6 +54,20 @@
 .dc-code-content > a { display: inline-block; padding: 1rem 1.25rem 0; font-size: 0.875rem; text-decoration: underline; text-underline-offset: 4px; }
 .dc-code pre { padding: 1.25rem; overflow-x: auto; font-size: 0.875rem; line-height: 1.85; tab-size: 4; }
 .dc-code code { font-family: Consolas, 'Courier New', monospace; }
+.dc-plan-content { padding: clamp(1rem, 3vw, 2rem); background: #fff; color: #414141; }
+.dc-plan-content > * + * { margin-top: 1rem; }
+.dc-plan-content > .dc-source { margin: 0 0 2rem; }
+.dc-plan-content h4 { margin-top: 2rem; font-size: 1.0625rem; color: #111; }
+.dc-plan-content h5, .dc-plan-content h6 { margin-top: 1.5rem; font-size: 1rem; color: #222; }
+.dc-plan-content ul, .dc-plan-content ol { padding-left: 1.5rem; line-height: 1.85; }
+.dc-plan-content ul { list-style: disc; }
+.dc-plan-content ol { list-style: decimal; }
+.dc-plan-content hr { margin: 2rem 0; border: 0; border-top: 1px solid #eee; }
+.dc-plan-table { overflow-x: auto; }
+.dc-plan-table table { width: 100%; border-collapse: collapse; font-size: 0.875rem; line-height: 1.7; }
+.dc-plan-table th, .dc-plan-table td { min-width: 5rem; padding: 0.65rem; border: 1px solid #ddd; text-align: left; }
+.dc-plan-table th { background: #f6f7f9; color: #222; }
+.dc-plan-content pre { background: #f6f7f9; color: #222; }
 .dc-figure { min-width: 0; margin: 1.75rem 0; }
 .dc-figure > a { display: block; }
 .image-lightbox-trigger { display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; text-align: inherit; }
