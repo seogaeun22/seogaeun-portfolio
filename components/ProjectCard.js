@@ -37,12 +37,13 @@ export default function ProjectCard({ project, onSelect }) {
       onBlur={() => setIsPreviewing(false)}
     >
       <div className="project-image-wrapper">
-        <img 
+        {!project.photoPending && <img
           src={project.image || "/api/placeholder/400/200"} 
           alt={project.title} 
           className="project-image" 
-        />
-        {youtubeId && isPreviewing && (
+        />}
+        {project.photoPending && <div className="sandy-photo-slot" role="img" aria-label="게임 이미지 영역" />}
+        {!project.photoPending && youtubeId && isPreviewing && (
           <iframe
             className="project-video-preview"
             src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&controls=0&playsinline=1&loop=1&playlist=${youtubeId}&modestbranding=1&rel=0`}
