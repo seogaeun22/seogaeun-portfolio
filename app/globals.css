@@ -74,6 +74,9 @@
 .dc-note { padding-left: 1rem; border-left: 2px solid var(--surface-border); }
 .dc-footer { padding-top: 2rem; display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; font-size: 0.95rem; }
 .dc-page a:focus-visible, .dc-page summary:focus-visible { outline: 3px solid #243dba; outline-offset: 4px; }
+.jamitnex-page .dc-header h1 { font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.25; word-break: keep-all; }
+.jamitnex-page #intro { scroll-margin-top: 1rem; }
+.jamitnex-page .dc-cover { height: auto; background: #ffdae2; }
 @media (max-width: 900px) {
   .dc-overview { gap: 1.5rem; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
   .dc-toc { flex-direction: row; flex-wrap: wrap; position: static; border-left: none; border-bottom: 1px solid var(--surface-border); padding: 0.75rem 0; }

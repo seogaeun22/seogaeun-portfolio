@@ -228,9 +228,10 @@ export const projectsData = [
   {
     id: 4,
     category: "ai",
-    aiFocus: "AI를 활용한 게임 개발과 BGM 제작",
+    detailPath: "/projects/jamitnex",
+    aiFocus: "Codex를 활용한 미니게임 개발·수정과 Suno AI BGM 제작",
     aiUsage: [
-      { tool: "OpenAI Codex", usage: "게임 개발에 활용" },
+      { tool: "OpenAI Codex", usage: "미니게임 개발·수정 보조" },
       { tool: "Suno AI", usage: "게임 BGM 제작" }
     ],
     title: "재밌넥이라도 사랑은 하고 싶어",
@@ -238,10 +239,10 @@ export const projectsData = [
     duration: "2026.07.24 ~ 2026.07.26",
     teamSize: "4인 프로젝트",
     role: "OpenAI Codex를 활용한 AI 기반 게임 개발, 메인 기획 및 시나리오 작성, 게임 화면·미니게임·UI 디자인, 미니 게임 개발, 실사 영상 연기, Suno AI를 활용한 BGM 제작, QA(게임 플레이 테스트 및 버그 발견·수정) 담당",
-    roleItems: ["AI 활용 개발: OpenAI Codex를 활용한 게임 개발","기획: 메인 기획·시나리오","디자인: 게임 화면·미니게임·UI","개발: 미니 게임 구현","QA: 게임 플레이 테스트 및 버그 발견·수정","콘텐츠: 실사 영상 연기·Suno AI BGM 제작"],
+    roleItems: ["기획: 메인 기획·시나리오 작성","디자인·개발: 미니게임·UI 제작 및 Codex 활용","QA: 플레이 테스트·버그 발견과 수정","콘텐츠: 실사 영상 연기·Suno AI BGM 제작"],
     github: "https://github.com/Bazzi4263/MyFirst3D",
     playLink: "https://youtu.be/H6Mu9AAfaFk",
-    image: "/projects/jamitnex/thumbnail.png",
+    image: "/projects/jamitnex/title-current.jpg",
     details: {
       genre: "영상형 시뮬레이션 / PC",
       summary: "소심한 남주인공(플레이어)이 '재밌넥' 게임잼에서 자신에게 말을 걸어준 여주인공과 함께 게임을 만들며 설렘을 느끼는 내용의 영상형 연애 시뮬레이션 게임입니다.",
