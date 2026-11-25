@@ -244,7 +244,7 @@ export const projectsData = [
     roleItems: ["기획: 메인 기획·시나리오 작성","디자인·개발: 미니게임·UI 제작 및 Codex 활용","QA: 플레이 테스트·버그 발견과 수정","콘텐츠: 실사 영상 연기·Suno AI BGM 제작"],
     github: "https://github.com/Bazzi4263/MyFirst3D",
     playLink: "https://youtu.be/H6Mu9AAfaFk",
-    image: "/projects/jamitnex/title-current.jpg",
+    image: "/projects/jamitnex/thumbnail.png",
     details: {
       genre: "영상형 시뮬레이션 / PC",
       summary: "소심한 남주인공(플레이어)이 '재밌넥' 게임잼에서 자신에게 말을 걸어준 여주인공과 함께 게임을 만들며 설렘을 느끼는 내용의 영상형 연애 시뮬레이션 게임입니다.",

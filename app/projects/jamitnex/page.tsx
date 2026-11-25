@@ -17,7 +17,7 @@ export const metadata = {
     title: '재밌넥이라도 사랑은 하고 싶어 | 서가은 포트폴리오',
     description: '게임잼에서 시작된 설렘을 영상과 미니게임으로 풀어낸 4인 프로젝트입니다.',
     url: 'https://seogaeun.com/projects/jamitnex',
-    images: [{ url: `${assets}/title-current.jpg`, width: 1536, height: 864, alt: '재밌넥이라도 사랑은 하고 싶어 타이틀 화면' }],
+    images: [{ url: `${assets}/thumbnail.png`, width: 1536, height: 1024, alt: '재밌넥이라도 사랑은 하고 싶어 썸네일' }],
   },
 };
 
@@ -80,7 +80,7 @@ export default function JamitnexPage() {
             </div>
           </header>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <ProjectVideoPreview image={`${assets}/title-current.jpg`} alt="시작하기·흐름도·환경설정 메뉴가 있는 게임 타이틀 화면" videoId="H6Mu9AAfaFk" title="재밌넥이라도 사랑은 하고 싶어" />
+          <ProjectVideoPreview image={`${assets}/thumbnail.png`} alt="재밌넥이라도 사랑은 하고 싶어 썸네일" videoId="H6Mu9AAfaFk" title="재밌넥이라도 사랑은 하고 싶어" />
         </div>
 
         <div className="dc-body">
