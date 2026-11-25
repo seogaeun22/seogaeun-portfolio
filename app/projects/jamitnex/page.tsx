@@ -66,7 +66,7 @@ export default function JamitnexPage() {
         <div id="intro" className="dc-overview">
           <header className="dc-header">
             <h1>재밌넥이라도<br />사랑은 하고 싶어</h1>
-            <p className="dc-lead"><strong>게임잼에서 함께 게임을 만들며 설렘을 느끼는 실사 영상형 연애 시뮬레이션입니다.</strong> 소심한 주인공 현빈의 선택과 미니게임 결과에 따라 인물의 반응과 이야기가 달라집니다.</p>
+            <p className="dc-lead"><strong>게임잼에서 함께 게임을 만들며 설렘을 느끼는 실사 영상형 연애 시뮬레이션입니다.</strong> 소심한 주인공 현빈의 선택과 미니게임 결과에 따라 인물의 반응과 스토리가 달라집니다.</p>
             <dl className="dc-facts">
               <div><dt>개발 기간</dt><dd>2026.07.24 ~ 2026.07.26</dd></div>
               <div><dt>팀 구성</dt><dd>4인 프로젝트</dd></div>
@@ -91,7 +91,7 @@ export default function JamitnexPage() {
           <article className="dc-article" aria-label="재밌넥이라도 사랑은 하고 싶어 프로젝트 상세">
             <section id="contribution" className="dc-section">
               <h2>담당 작업</h2>
-              <p className="dc-takeaway">이야기 속 행동을 미니게임으로 옮기기 위해 규칙과 화면의 조건을 정했습니다. Codex에 구현을 요청하고, 결과를 확인해 가독성·조작·진행 문제를 다시 수정하도록 지시했습니다.</p>
+              <p className="dc-takeaway">스토리 속 행동을 미니게임으로 옮기기 위해 규칙과 화면의 조건을 정했습니다. Codex에 구현을 요청하고, 결과를 확인해 가독성·조작·진행 문제를 다시 수정하도록 지시했습니다.</p>
               <dl className="dc-contributions">
                 <div><dt>기획·시나리오</dt><dd>메인 기획과 시나리오 작성</dd></div>
                 <div><dt>디자인·개발</dt><dd>게임 화면·미니게임·UI 디자인, 미니게임 구현 및 UI 구조 통합</dd></div>
@@ -155,7 +155,7 @@ _running = true;`}</CodeSample>
             <section id="results" className="dc-section">
               <h2>결과 화면·음성</h2>
               <p>타이틀에서 시작해 진행한 PC 실행본의 실사 영상 플레이 화면과 음성·BGM입니다.</p>
-              <ProjectCapture file="story-current.jpg" alt="등장인물과 자막이 표시된 실사 영상 플레이 화면" caption="실사 영상 · 게임잼에서 만난 인물들의 대화를 따라 이야기가 진행됩니다." />
+              <ProjectCapture file="story-current.jpg" alt="등장인물과 자막이 표시된 실사 영상 플레이 화면" caption="실사 영상 · 게임잼에서 만난 인물들의 대화를 따라 스토리가 진행됩니다." />
               <h3>실사 영상의 음성과 게임 BGM</h3>
               <AudioSample file="prologue-dialogue.mp3" title="프롤로그 · 실사 영상 음성" description="팀이 촬영한 프롤로그 영상의 원음 중 30초 발췌입니다." />
               <AudioSample file="title-bgm.mp3" title="타이틀 BGM" description="Suno AI를 활용해 제작하고 타이틀에 적용한 음악입니다." />
