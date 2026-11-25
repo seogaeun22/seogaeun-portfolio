@@ -53,7 +53,7 @@ export default function DietDefensePage() {
     </div>
     <div className="dc-body">
       <nav className="dc-toc" aria-label="상세 페이지 목차">
-        <a href="#introduction">게임 소개</a><a href="#contribution">담당 작업</a><a href="#improvements">요청·검토·수정 사례</a><a href="#implementation">구현 근거</a><a href="#results">결과 화면·사운드</a>
+        <a href="#introduction">게임 소개</a><a href="#contribution">담당 작업</a><a href="#planning">기획서 작성</a><a href="#improvements">요청·검토·수정 사례</a><a href="#implementation">구현 근거</a><a href="#results">결과 화면·사운드</a>
       </nav>
       <article className="dc-article" aria-label="Diet Defense 제작 경험">
         <Section id="contribution" title="담당 작업">
@@ -65,10 +65,19 @@ export default function DietDefensePage() {
           </dl>
           <h3>게임 전체에 구현된 범위</h3>
           <p>3개 스테이지에 각각 6개 웨이브가 있으며, 난이도 3종, 타워 8종, 액티브 스킬 3종, 선택 이벤트와 플레이 기록 저장이 연결됩니다.</p>
+          <h3>AI를 어떤 작업에 사용했는가</h3>
+          <dl className="dc-contributions">
+            <div><dt>ChatGPT</dt><dd>컨셉·기획 문장을 보완하고 타이틀, 음식 몬스터, 버튼 UI, 클리어 화면 이미지를 제작했습니다. 결과물의 스타일과 화면 적용 상태를 확인하며 골랐습니다.</dd></div>
+            <div><dt>Codex</dt><dd>기획서를 기준으로 시스템 구현, 에셋 적용, UI 배치와 수정에 활용했습니다. 아래 사례는 제작 당시 제가 보낸 요청과 Codex의 처리 기록을 바탕으로 정리했습니다.</dd></div>
+            <div><dt>Suno AI</dt><dd>ChatGPT로 작성한 영어 프롬프트를 바탕으로 게임 분위기에 맞는 BGM을 제작했습니다. 효과음은 별도의 파형 생성 스크립트로 구성되어 있습니다.</dd></div>
+          </dl>
+        </Section>
+        <Section id="planning" title="기획서 작성">
+          <h3>Codex를 이용하여 기획서.md 파일을 작성하였습니다.</h3>
           <details className="dc-code dc-plan">
             <summary>다이어트 디펜스 기획서 펼쳐 보기<span>제작 당시 기획서</span></summary>
             <div className="dc-plan-content">
-              <p className="dc-source">제가 정한 컨셉과 요구 조건을 전달하고, Codex를 이용해 기획서.md 파일을 만들었습니다. 일부 규칙·수치·조작은 최종 게임과 다를 수 있습니다.</p>
+              <p className="dc-source">제작 당시 기획서로, 일부 규칙·수치·조작은 최종 게임과 다를 수 있습니다.</p>
               <Markdown remarkPlugins={[remarkGfm]} components={{
                 h1: ({ children }) => <h3>{children}</h3>,
                 h2: ({ children }) => <h4>{children}</h4>,
@@ -78,12 +87,6 @@ export default function DietDefensePage() {
               }}>{plan}</Markdown>
             </div>
           </details>
-          <h3>AI를 어떤 작업에 사용했는가</h3>
-          <dl className="dc-contributions">
-            <div><dt>ChatGPT</dt><dd>컨셉·기획 문장을 보완하고 타이틀, 음식 몬스터, 버튼 UI, 클리어 화면 이미지를 제작했습니다. 결과물의 스타일과 화면 적용 상태를 확인하며 골랐습니다.</dd></div>
-            <div><dt>Codex</dt><dd>기획서를 기준으로 시스템 구현, 에셋 적용, UI 배치와 수정에 활용했습니다. 아래 사례는 제작 당시 제가 보낸 요청과 Codex의 처리 기록을 바탕으로 정리했습니다.</dd></div>
-            <div><dt>Suno AI</dt><dd>ChatGPT로 작성한 영어 프롬프트를 바탕으로 게임 분위기에 맞는 BGM을 제작했습니다. 효과음은 별도의 파형 생성 스크립트로 구성되어 있습니다.</dd></div>
-          </dl>
         </Section>
         <Section id="improvements" title="요청·검토·수정 사례">
           <p className="dc-source">인용은 제작 당시 제 요청의 짧은 발췌이며, 그 외 과정 설명은 대화와 현재 소스를 바탕으로 요약했습니다.</p>
