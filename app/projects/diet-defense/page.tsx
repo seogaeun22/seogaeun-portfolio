@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import ImageLightbox from '@/components/ImageLightbox';
+import ProjectVideoPreview from '@/components/ProjectVideoPreview';
 import { Download, FileText, Play } from 'lucide-react';
 import type { ReactNode } from 'react';
 
@@ -11,10 +13,10 @@ const assets = '/projects/diet-defense';
 
 function Capture({ file, caption }: { file: string; caption: string }) {
   return <figure className="dc-figure">
-    <a href={`${assets}/${file}.png`} target="_blank" rel="noopener noreferrer" aria-label={`${caption} — 원본 이미지 보기`}>
+    <ImageLightbox src={`${assets}/${file}.png`} alt={caption}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={`${assets}/${file}.png`} alt={caption} loading="lazy" />
-    </a><figcaption>{caption}</figcaption>
+    </ImageLightbox><figcaption>{caption}</figcaption>
   </figure>;
 }
 
@@ -47,8 +49,7 @@ export default function DietDefensePage() {
           <a className="btn" href={`${assets}/diet_defense_work_report.pdf`} target="_blank" rel="noopener noreferrer"><FileText size={18} />리포트 보기</a>
         </div>
       </header>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className="dc-cover" src={`${assets}/title-current.png`} alt="실행 중인 Diet Defense의 타이틀 화면" />
+      <ProjectVideoPreview image={`${assets}/title-current.png`} alt="실행 중인 Diet Defense의 타이틀 화면" videoId="Jr1Cg_P9-L8" title="Diet Defense" />
     </div>
     <div className="dc-body">
       <nav className="dc-toc" aria-label="상세 페이지 목차">

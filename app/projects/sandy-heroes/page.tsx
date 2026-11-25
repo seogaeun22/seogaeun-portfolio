@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import ImageLightbox from '@/components/ImageLightbox';
+import ProjectVideoPreview from '@/components/ProjectVideoPreview';
 import { FileText, Github, Play } from 'lucide-react';
 
 const repo = 'https://github.com/klop2211/SandyHeroesClient';
@@ -34,8 +36,7 @@ export default function SandyHeroesPage() {
         <a className="btn" href={multiplayerRepo} target="_blank" rel="noopener noreferrer"><Github size={18} />GitHub · 멀티플레이</a>
       </div>
     </header>
-    {/* eslint-disable-next-line @next/next/no-img-element */}
-    <img className="dc-cover" src="https://img.youtube.com/vi/CVMWE64RcTc/maxresdefault.jpg" alt="Sandy Heroes 프로젝트 대표 이미지" />
+    <ProjectVideoPreview image="https://img.youtube.com/vi/CVMWE64RcTc/maxresdefault.jpg" alt="Sandy Heroes 프로젝트 대표 이미지" videoId="CVMWE64RcTc" title="Sandy Heroes" />
     </div>
     <div className="dc-body"><nav className="dc-toc" aria-label="상세 페이지 목차">
       <a href="#introduction">게임 소개</a><a href="#contribution">담당 작업</a><a href="#implementation">핵심 구현과 선택 이유</a><a href="#results">결과 화면</a><a href="#improvements">실제 문제와 수정 경험</a>
@@ -99,10 +100,10 @@ openSet.push(start);`}</Code>
       </section>
       <section id="results" className="dc-section"><h2>결과 화면</h2>
         <figure className="dc-figure">
-          <a href="/projects/sandy-heroes/boss-battle.png" target="_blank" rel="noopener noreferrer" aria-label="보스 전투 화면 — 원본 이미지 보기">
+          <ImageLightbox src="/projects/sandy-heroes/boss-battle.png" alt="보스 전투 화면">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/projects/sandy-heroes/boss-battle.png" alt="공중의 드래곤 보스를 조준하는 1인칭 전투 화면과 붉은 파티클 효과" loading="lazy" />
-          </a>
+          </ImageLightbox>
           <figcaption>보스 전투 · 드래곤 보스를 조준하는 장면과 붉은 파티클 효과</figcaption>
         </figure>
       </section>

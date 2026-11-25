@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import ImageLightbox from '@/components/ImageLightbox';
+import ProjectVideoPreview from '@/components/ProjectVideoPreview';
 import { Github, Play, Download } from 'lucide-react';
 
 const repository = 'https://github.com/Bazzi4263/MyFirst3D';
@@ -22,10 +24,10 @@ export const metadata = {
 function ProjectCapture({ file, alt, caption }: { file: string; alt: string; caption: string }) {
   return (
     <figure className="dc-figure">
-      <a href={`${assets}/${file}`} target="_blank" rel="noopener noreferrer" aria-label={`${alt} — 원본 이미지 보기`}>
+      <ImageLightbox src={`${assets}/${file}`} alt={alt}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={`${assets}/${file}`} alt={alt} loading="lazy" width={1536} height={864} />
-      </a>
+      </ImageLightbox>
       <figcaption>{caption}</figcaption>
     </figure>
   );
@@ -78,7 +80,7 @@ export default function JamitnexPage() {
             </div>
           </header>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="dc-cover" src={`${assets}/title-current.jpg`} width={1536} height={864} alt="시작하기·흐름도·환경설정 메뉴가 있는 게임 타이틀 화면" />
+          <ProjectVideoPreview image={`${assets}/title-current.jpg`} alt="시작하기·흐름도·환경설정 메뉴가 있는 게임 타이틀 화면" videoId="H6Mu9AAfaFk" title="재밌넥이라도 사랑은 하고 싶어" />
         </div>
 
         <div className="dc-body">

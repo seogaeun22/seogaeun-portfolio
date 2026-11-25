@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import ImageLightbox from '@/components/ImageLightbox';
+import ProjectVideoPreview from '@/components/ProjectVideoPreview';
 import { Github, Play, ExternalLink } from 'lucide-react';
 
 const repository = 'https://github.com/dionme2622/Epic_AI_MegaJam';
@@ -12,10 +14,10 @@ export const metadata = {
 function ProjectCapture({ file, alt, caption }: { file: string; alt: string; caption: string }) {
   return (
     <figure className="dc-figure">
-      <a href={`/projects/dragons-cut/${file}`} target="_blank" rel="noopener noreferrer" aria-label={`${alt} — 원본 이미지 보기`}>
+      <ImageLightbox src={`/projects/dragons-cut/${file}`} alt={alt}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={`/projects/dragons-cut/${file}`} alt={alt} loading="lazy" />
-      </a>
+      </ImageLightbox>
       <figcaption>{caption}</figcaption>
     </figure>
   );
@@ -51,7 +53,7 @@ export default function DragonsCutPage() {
             <a className="btn" href={repository} target="_blank" rel="noopener noreferrer"><Github size={18} />GitHub 저장소 보기</a>
           </div>
         </header>
-        <img className="dc-cover" src="/projects/dragons-cut/thumbnail.png" alt="Dragon’s Cut 게임 대표 이미지" /></div>
+        <ProjectVideoPreview image="/projects/dragons-cut/thumbnail.png" alt="Dragon’s Cut 게임 대표 이미지" videoId="CHJFBZ8OWZ4" title="Dragon’s Cut" /></div>
         <div className="dc-body">
         <nav className="dc-toc" aria-label="상세 페이지 목차">
           <a href="#contribution">담당 작업</a><a href="#dialogue">자막·음성</a><a href="#cinematic">시네마틱</a><a href="#assets">캐릭터·사운드</a><a href="#verification">적용 중 문제와 개선</a>

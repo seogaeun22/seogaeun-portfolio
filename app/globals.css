@@ -56,6 +56,18 @@
 .dc-code code { font-family: Consolas, 'Courier New', monospace; }
 .dc-figure { min-width: 0; margin: 1.75rem 0; }
 .dc-figure > a { display: block; }
+.image-lightbox-trigger { display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; text-align: inherit; }
+.image-lightbox-trigger:focus-visible { outline: 3px solid #243dba; outline-offset: 4px; }
+.image-viewer { position: fixed; inset: 0; margin: auto; padding: 0; width: 100vw; height: 100dvh; max-width: none; max-height: none; border: 0; background: #111; color: #fff; }
+.image-viewer::backdrop { background: rgba(0, 0, 0, 0.9); }
+.image-viewer-toolbar { height: 64px; padding: 8px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #444; }
+.image-viewer-toolbar button { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; height: 44px; padding: 0 12px; border: 1px solid #666; border-radius: 6px; color: #fff; background: #252525; cursor: pointer; font-size: 1rem; }
+.image-viewer-toolbar button:disabled { opacity: 0.35; cursor: default; }
+.image-viewer-toolbar button:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+.image-viewer-toolbar .image-viewer-close { margin-left: auto; }
+.image-viewer-stage { height: calc(100% - 64px); overflow: auto; overscroll-behavior: contain; }
+.image-viewer-canvas { display: grid; place-items: center; width: max-content; min-width: 100%; min-height: 100%; padding: 16px; }
+.image-viewer .image-viewer-photo { display: block; max-width: none; max-height: none; flex-shrink: 0; object-fit: contain; }
 .dc-figure img { display: block; width: 100%; height: auto; border: 1px solid var(--surface-border); border-radius: 6px; }
 .dc-figure figcaption { margin-top: 0.75rem; color: var(--text-secondary); font-size: 0.875rem; line-height: 1.7; word-break: keep-all; overflow-wrap: anywhere; }
 .dc-capture-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; margin: 1.75rem 0; }
@@ -549,7 +561,8 @@ a {
 .project-card .project-genre { font-size: 0.875rem; }
 .project-category-badge { display: inline-block; margin-bottom: 1rem; color: var(--text-secondary); font-size: 0.875rem; font-weight: 700; }
 .project-category-badge.is-ai { color: #243dba; }
-.project-card-ai { border-top: 3px solid #243dba; }
+.dc-video-preview { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 6px; background: #000; }
+.dc-video-preview > img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .project-summary { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; margin-bottom: 1.25rem; word-break: keep-all; overflow-wrap: anywhere; }
 .project-ai-usage { width: 100%; padding: 1.1rem; margin-bottom: 1.25rem; border: 1px solid #dbe1fb; background: #f4f6ff; border-radius: 4px; }
 .project-ai-usage h4 { font-size: 1rem; line-height: 1.5; color: #203593; margin-bottom: 0.8rem; }
