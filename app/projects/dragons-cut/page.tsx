@@ -23,15 +23,6 @@ function ProjectCapture({ file, alt, caption }: { file: string; alt: string; cap
   );
 }
 
-function CodeSample({ file, path, children }: { file: string; path: string; children: string }) {
-  return (
-    <details className="dc-code">
-      <summary>핵심 코드 보기 <span>{file}</span></summary>
-      <div className="dc-code-content"><a href={source(path)} target="_blank" rel="noopener noreferrer">GitHub에서 원본 보기</a><pre><code>{children}</code></pre></div>
-    </details>
-  );
-}
-
 export default function DragonsCutPage() {
   return (
     <main className="dc-page">
@@ -80,16 +71,6 @@ export default function DragonsCutPage() {
             <li><strong>이전 음성 정리</strong><p>새 대사를 재생하기 전에 기존 음성을 멈춰 두 음성이 겹치지 않도록 합니다.</p></li>
             <li><strong>표시 시간 조정</strong><p>재생할 음성의 길이를 읽어 자막 유지 시간을 늘립니다.</p></li>
           </ol>
-          <CodeSample file="DirectorCutPlayHUD.cpp" path="Source/MegaJam/DirectorCutPlayHUD.cpp">{`if (IsValid(SubtitleVoice)) SubtitleVoice->Stop();
-SubtitleVoice = nullptr;
-if (const TCHAR* VoicePath = FindDirectorCutVoice(En))
-{
-    if (USoundBase* Sound = LoadObject<USoundBase>(nullptr, VoicePath))
-    {
-        Duration = FMath::Max(Duration, Sound->GetDuration() + .25f);
-        SubtitleVoice = UGameplayStatics::SpawnSound2D(this, Sound);
-    }
-}`}</CodeSample>
           <ProjectCapture file="subtitle-lobby-route.png" alt="화자와 한국어·영어 자막을 화면 상단에 표시한 플레이 화면" caption="화자와 한국어·영어 자막을 화면 상단에 함께 표시합니다." />
           <p className="dc-source">관련 소스: <a href={source('SourceAssets/VoicePrompts/install_gameplay_voices.py')} target="_blank" rel="noopener noreferrer">음성 준비·임포트 스크립트</a> · <a href={source('Source/MegaJam/DirectorCutVoiceLookup.h')} target="_blank" rel="noopener noreferrer">대사별 음성 조회</a></p>
         </section>
@@ -100,28 +81,8 @@ if (const TCHAR* VoicePath = FindDirectorCutVoice(En))
           <p><strong>실제 요청 발췌:</strong> “용사와 드래곤의 대사는 추후에 보이스 넣을 예정, 지금은 자막으로만 넣기”, “각 하체 에셋은 이미 존재함. 이것들을 이용해서 넣을 것.” 기존 에셋 사용과 우선 구현할 범위를 명시해 엔딩을 단계적으로 제작했습니다.</p>
           <h3>시퀀서 타이밍과 자막 연결</h3>
           <p>시퀀서에 맞춰 표시되는 자막을 화자·한국어·영어로 나눠 읽기 쉽게 구성했습니다. 구현에서는 자막 액터의 숨김 상태로 현재 대사를 선택하고, 기존 이미지 메시 대신 Slate UI에 출력해 시퀀서의 표시 타이밍을 유지합니다.</p>
-          <CodeSample file="DirectorCutPrologueSubtitles.cpp" path="Source/MegaJam/DirectorCutPrologueSubtitles.cpp">{`ActiveCaption = INDEX_NONE;
-for (int32 i = 0; i < Captions.Num(); ++i)
-{
-    if (Captions[i].IsValid() && !Captions[i]->IsHidden())
-    {
-        ActiveCaption = i;
-        break;
-    }
-}`}</CodeSample>
           <h3>시퀀스가 끝나는 시점에 레벨 이동</h3>
           <p>SequencePlayer의 <strong>OnFinished 이벤트</strong>에 레벨 이동 함수를 연결합니다. 시퀀스 액터와 목적지 레벨이 설정되어 있을 때만 동작하며, 별도의 대기 시간 대신 실제 재생 종료 시점을 사용합니다.</p>
-          <CodeSample file="DirectorCutSequenceTransition.cpp" path="Source/MegaJam/DirectorCutSequenceTransition.cpp">{`if (SequenceActor && !DestinationLevel.IsNull())
-{
-    if (ULevelSequencePlayer* Player = SequenceActor->GetSequencePlayer())
-    {
-        Player->OnFinished.AddUniqueDynamic(
-            this, &ADirectorCutSequenceTransition::TravelToDestination);
-    }
-}
-
-// TravelToDestination 내부
-UGameplayStatics::OpenLevelBySoftObjectPtr(this, DestinationLevel);`}</CodeSample>
           <div className="dc-capture-grid">
             <ProjectCapture file="lobby-current.png" alt="게임 시작 버튼이 있는 로비 화면" caption="로비 · 게임 시작" />
             <ProjectCapture file="prologue-lobby-route.png" alt="용사와 드래곤이 대화하는 프롤로그 화면" caption="프롤로그 · 용사와 드래곤의 대화" />

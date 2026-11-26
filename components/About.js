@@ -33,6 +33,7 @@ export default function About() {
                 <div className="skills-container">
                   <span className="skill-tag core">C++</span>
                   <span className="skill-tag core">DirectX 12</span>
+                  <span className="skill-tag core">AI</span>
                 </div>
               </div>
 
@@ -41,7 +42,6 @@ export default function About() {
                 <div className="skills-container">
                   <span className="skill-tag">Unreal Engine</span>
                   <span className="skill-tag">Git</span>
-                  <span className="skill-tag">AI</span>
                 </div>
               </div>
             </div>

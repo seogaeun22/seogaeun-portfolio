@@ -73,6 +73,7 @@ export default function Resume() {
                   <div className="resume-skill-tags">
                     <span className="skill-tag core">C++</span>
                     <span className="skill-tag core">DirectX 12</span>
+                    <span className="skill-tag core">AI</span>
                   </div>
                 </div>
                 <div className="resume-skill-group">
@@ -80,7 +81,6 @@ export default function Resume() {
                   <div className="resume-skill-tags">
                     <span className="skill-tag">Unreal Engine</span>
                     <span className="skill-tag">Git</span>
-                    <span className="skill-tag">AI</span>
                   </div>
                 </div>
               </div>

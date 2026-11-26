@@ -34,18 +34,6 @@ function ProjectCapture({ file, alt, caption }: { file: string; alt: string; cap
   );
 }
 
-function CodeSample({ file, path, children }: { file: string; path: string; children: string }) {
-  return (
-    <details className="dc-code">
-      <summary>구현 근거 · 코드 보기 <span>{file}</span></summary>
-      <div className="dc-code-content">
-        <a href={source(path)} target="_blank" rel="noopener noreferrer">GitHub에서 원본 보기</a>
-        <pre><code>{children}</code></pre>
-      </div>
-    </details>
-  );
-}
-
 function AudioSample({ file, title, description }: { file: string; title: string; description: string }) {
   return (
     <figure className="dc-voice-sample">
@@ -109,18 +97,6 @@ export default function JamitnexPage() {
               <p><strong>검토·재지시</strong> · 다른 미니게임과 UI를 통일한 뒤 <q>적 단어가 들어갈 빈칸과 차별점이 들어갈 빈칸의 색이 같아서 혼동스러워. 색을 달리해줘.</q>라고 지적했습니다. 이어 이 문제를 공통 디자인 프롬프트에도 반영하도록 요청했습니다.</p>
               <p><strong>AI 작업·결과</strong> · Codex가 빈칸별 선택 단계 연결과 색상 수정을 수행했습니다. 최종 구현에서는 ‘라운드’ 두 칸이 함께 채워지고, 세 역할에 서로 다른 색을 사용합니다. 역할별 색 구분과 실제 렌더 화면 확인 규칙은 Codex가 공통 프롬프트에 정리했습니다.</p>
               <ProjectCapture file="word-current.jpg" alt="문장 빈칸과 제한시간이 표시된 단어 선택 미니게임" caption="문장 만들기 · 빈칸 순서에 맞는 단어를 골라 게임 기획을 설명합니다." />
-              <CodeSample file="WordSentenceClickGame.cs · 반복 빈칸 갱신" path={`${runtime}WordSentenceClickGame.cs`}>{`private void UpdateSentenceBlanks()
-{
-    foreach (var blank in _sentenceBlanks)
-    {
-        if (blank.Label != null)
-        {
-            blank.Label.text = blank.StepIndex < _selectedWords.Count
-                ? _selectedWords[blank.StepIndex]
-                : "_____";
-        }
-    }
-}`}</CodeSample>
               <p className="dc-source">구현 근거: <a href={commit('a5a9596')} target="_blank" rel="noopener noreferrer">문장 만들기 미니게임 수정</a> · <a href={source(`${runtime}WordSentenceClickGame.cs`)} target="_blank" rel="noopener noreferrer">최종 빈칸 연결·색상 구현</a></p>
 
               <p>미니게임7의 디자인을 다른 미니게임에도 적용하도록 요청해, Codex가 공통 디자인 프롬프트를 작성했습니다. 색상 혼동에 대한 제 피드백으로 구분·검증 규칙을 보완했으며, 아래는 미니게임3에 실제 전달한 적용본입니다.</p>
@@ -137,12 +113,6 @@ export default function JamitnexPage() {
               <p><strong>검토·재지시</strong> · 내용과 맞지 않는 도형 그림은 삭제하도록 하고, 카드 한 장의 시안을 먼저 검토했습니다. 사실적인 시안에서 2D 방향으로 조정한 뒤 <q>이번엔 도트풍으로도 해볼래?</q>라고 요청하고, 도트 시안을 선택했습니다. 안내에는 가로 슬라이드와 대화를 떠올리라는 Tip도 지정했습니다.</p>
               <p><strong>AI 작업·결과</strong> · AI가 카드 시안을 제작하고, Codex가 선택한 그림과 안내 배너를 Unity에 적용했습니다. 최종 구현은 안내가 사라진 뒤 입력과 타이머를 켜도록 구성되어 있습니다.</p>
               <ProjectCapture file="cards-current.jpg" alt="게임 소개·핵심 시스템·플레이 영상 카드를 고르는 발표 미니게임" caption="발표 구성 · 앞선 대화를 떠올리며 세 열의 카드를 맞춥니다." />
-              <CodeSample file="CardPresentationMiniGame.cs · 안내 종료 후 시작 부분 발췌" path="CardPresentationMiniGame/Runtime/CardPresentationMiniGame.cs">{`_instructionOverlay.SetActive(false);
-_instructionGroup.blocksRaycasts = false;
-_introRoutine = null;
-_feedbackText.text = "세 장의 맥락이 자연스럽게 이어지도록 맞춰보세요";
-SetControlsInteractable(true);
-_running = true;`}</CodeSample>
 
               <h3>AI를 활용한 작업</h3>
               <dl className="dc-contributions">
@@ -169,24 +139,8 @@ _running = true;`}</CodeSample>
               <p><strong>의도·요청</strong> · 미니게임 중에도 설정과 이동 메뉴를 쓸 수 있도록 <q>미니게임할 때에도 ESC키 눌러서 조작 가능하게 해줘.</q>라고 요청했습니다. 흐름도에서 완료한 미니게임에 다시 진입할 때의 오류도 함께 보고했습니다.</p>
               <p><strong>검토·재지시</strong> · 첫 수정 뒤에도 <q>ESC 키를 누르면 타이머가 일시정지되지만 ESC UI가 뜨지 않아.</q>라고 재보고했습니다. 테스트용 복귀 로직의 영향일 수 있다는 제 추측과 달리, Codex는 메뉴가 미니게임 Canvas 뒤에 가려진 것을 원인으로 분석했습니다.</p>
               <p><strong>AI 작업·결과</strong> · Codex가 ESC 메뉴를 더 높은 순서의 독립 Canvas로 수정하고, 요청한 테스트 진입 기능도 제거했습니다. 최종 소스에서는 메뉴 표시와 타이머·입력·BGM의 일시정지를 연결하고, 닫으면 재개하도록 처리합니다.</p>
-              <CodeSample file="CardPresentationMiniGame.cs · Update 앞부분 발췌" path="CardPresentationMiniGame/Runtime/CardPresentationMiniGame.cs">{`if (WordSentenceClickBootstrap.IsMiniGamePaused || !_running || _mistakeVideoPlaying)
-{
-    return;
-}
-
-_remainingTime = Mathf.Max(0f, _remainingTime - Time.unscaledDeltaTime);
-UpdateTimer();`}</CodeSample>
 
               <p>같이 보고한 재진입 오류에 대해서는 Codex가 완료 상태를 해제하고 이전 호감도 변화량을 되돌리도록 수정했습니다. 재플레이 문제를 발견한 것은 제 역할이며, 변화량을 저장·복원하는 해결 방식은 Codex가 구현했습니다.</p>
-              <CodeSample file="VisualNovelRouteGame.cs · 재진입 처리 부분 발췌" path={`${runtime}VisualNovelRouteGame.cs`}>{`if (HasMiniGameSlot(scene))
-{
-    _completedMiniGameSceneIds.Remove(scene.id);
-    if (_miniGameAffectionDeltasBySceneId.TryGetValue(scene.id, out var previousDelta))
-    {
-        ApplyAffection(-previousDelta.x, -previousDelta.y);
-        _miniGameAffectionDeltasBySceneId.Remove(scene.id);
-    }
-}`}</CodeSample>
               <p className="dc-source">수정 이력: <a href={commit('3b7a347')} target="_blank" rel="noopener noreferrer">미니게임 ESC 메뉴와 플로우차트 진행도 개선</a></p>
             </section>
           </article>
